@@ -85,6 +85,14 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     verifyContractUrl: "https://snowtrace.io/verifyContract",
     explorerApiKey: REACT_APP_ETHERSCAN_KEY,
   },
+  [NETWORK.LINEA_GOERLI]: {
+    networkExplorerName: "Linea Goerli Explorer",
+    networkExplorerUrl: "https://explorer.goerli.linea.build",
+    networkExplorerApiUrl: "https://explorer.goerli.linea.build/api",
+    safeTransactionApi: "https://transaction-testnet.staging.safe.linea.build",
+    safeUrl: "https://staging.safe.linea.build",
+    verifyContractUrl: "https://docs.blockscout.com/for-users/verifying-a-smart-contract",
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {
