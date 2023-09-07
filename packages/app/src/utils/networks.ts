@@ -83,7 +83,7 @@ export const NETWORKS: Record<NETWORK, Network> = {
   [NETWORK.LINEA_GOERLI]: {
     chainId: NETWORK.LINEA_GOERLI,
     name: "linea_goerli_testnet",
-    shortName: "linea_testnet",
+    shortName: "linea-gor",
     nativeAsset: NATIVE_ASSET.LINEA_ETH,
   },
 }
