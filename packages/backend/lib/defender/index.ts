@@ -21,10 +21,12 @@ export const setupNewNotificationChannel = async (
   client: SentinelClient,
   channel: NotificationType,
   config: any,
+  realityModuleAddress: string,
+  network: Network,
 ) => {
   const notificationChannel = await client.createNotificationChannel({
     type: channel,
-    name: `ZodiacRealityModuleNotification-${channel}`,
+    name: `ZodiacRealityModuleNotification-${network}:${realityModuleAddress}-${channel}`,
     config,
     paused: false,
   })
@@ -38,7 +40,6 @@ export const setupNewNotificationChannel = async (
 
 export const createSentinel = async (
   client: SentinelClient,
-  notificationChannels: string[],
   network: Network,
   realityModuleAddress: string,
   autotaskId: string,
@@ -74,7 +75,7 @@ export const createSentinel = async (
       },
     ],
     autotaskTrigger: autotaskId,
-    notificationChannels: notificationChannels,
+    notificationChannels: [],
   }
 
   const sentinel = await client.create(requestParameters)
