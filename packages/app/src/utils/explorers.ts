@@ -1,38 +1,39 @@
 import { NETWORK } from "./networks"
 
 const isDev = process.env.NODE_ENV === "development"
+
 // TODO: enable error throws after modifying .env variables
-// const REACT_APP_ETHERSCAN_KEY = process.env.REACT_APP_ETHERSCAN_KEY
+const REACT_APP_ETHERSCAN_KEY = process.env.REACT_APP_ETHERSCAN_KEY
 // if (!REACT_APP_ETHERSCAN_KEY) {
 //   throw new Error("REACT_APP_ETHERSCAN_KEY is not set")
 // }
 
-// const REACT_APP_GNOSISSCAN_KEY = process.env.REACT_APP_GNOSISSCAN_KEY
+const REACT_APP_GNOSISSCAN_KEY = process.env.REACT_APP_GNOSISSCAN_KEY
 // if (!isDev && !REACT_APP_GNOSISSCAN_KEY) {
 //   throw new Error("REACT_APP_GNOSISSCAN_KEY is not set")
 // }
 
-// const REACT_APP_POLYGONSCAN_KEY = process.env.REACT_APP_POLYGONSCAN_KEY
+const REACT_APP_POLYGONSCAN_KEY = process.env.REACT_APP_POLYGONSCAN_KEY
 // if (!isDev && !REACT_APP_POLYGONSCAN_KEY) {
 //   throw new Error("REACT_APP_POLYGONSCAN_KEY is not set")
 // }
 
-// const REACT_APP_BSCSCAN_KEY = process.env.REACT_APP_BSCSCAN_KEY
+const REACT_APP_BSCSCAN_KEY = process.env.REACT_APP_BSCSCAN_KEY
 // if (!isDev && !REACT_APP_BSCSCAN_KEY) {
 //   throw new Error("REACT_APP_BSCSCAN_KEY is not set")
 // }
 
-// const REACT_APP_OPTIMISTIC_ETHERSCAN_KEY = process.env.REACT_APP_OPTIMISTIC_ETHERSCAN_KEY
+const REACT_APP_OPTIMISTIC_ETHERSCAN_KEY = process.env.REACT_APP_OPTIMISTIC_ETHERSCAN_KEY
 // if (!isDev && !REACT_APP_OPTIMISTIC_ETHERSCAN_KEY) {
 //   throw new Error("REACT_APP_OPTIMISTIC_ETHERSCAN_KEY is not set")
 // }
 
-// const REACT_APP_ARBISCAN_KEY = process.env.REACT_APP_ARBISCAN_KEY
+const REACT_APP_ARBISCAN_KEY = process.env.REACT_APP_ARBISCAN_KEY
 // if (!isDev && !REACT_APP_ARBISCAN_KEY) {
 //   throw new Error("REACT_APP_ARBISCAN_KEY is not set")
 // }
 
-// const REACT_APP_SNOWTRACE_KEY = process.env.REACT_APP_SNOWTRACE_KEY
+const REACT_APP_SNOWTRACE_KEY = process.env.REACT_APP_SNOWTRACE_KEY
 // if (!isDev && !REACT_APP_SNOWTRACE_KEY) {
 //   throw new Error("REACT_APP_SNOWTRACE_KEY is not set")
 // }
