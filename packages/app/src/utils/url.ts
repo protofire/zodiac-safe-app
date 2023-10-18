@@ -11,7 +11,7 @@ export function safeAppUrl(safeInfo: SafeInfo, appUrl: string) {
 }
 
 export function rolesAppUrl(safeInfo: SafeInfo, rolesAddress: string) {
-  const base = "https://roles.gnosisguild.org"
+  const base = "https://roles.zodiac.safe.linea.build/"
   const prefix = chainPrefix(safeInfo)
 
   return new URL(`${base}/#/${prefix}:${rolesAddress}`).href

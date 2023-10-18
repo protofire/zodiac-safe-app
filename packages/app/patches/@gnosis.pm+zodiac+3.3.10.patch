@@ -1,0 +1,40 @@
+diff --git a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
+index 67d738e..60bd444 100644
+--- a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
++++ b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
+@@ -80,6 +80,7 @@ var SupportedNetworks;
+     SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
+     SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
+     SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
++    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
+ })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
+ // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
+ //   const { initCode, salt } = MasterCopyInitData[contract];
+@@ -198,6 +199,7 @@ exports.ContractVersions = {
+         } }),
+     [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
+     [SupportedNetworks.Sepolia]: CanonicalAddresses,
++    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
+ };
+ /** Addresses of the head versions of all contracts */
+ exports.ContractAddresses = Object.fromEntries(Object.entries(exports.ContractVersions).map(([network, contracts]) => [
+diff --git a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
+index 208b107..bfaf0df 100644
+--- a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
++++ b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
+@@ -51,6 +51,7 @@ export var SupportedNetworks;
+     SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
+     SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
+     SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
++    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
+ })(SupportedNetworks || (SupportedNetworks = {}));
+ // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
+ //   const { initCode, salt } = MasterCopyInitData[contract];
+@@ -169,6 +170,7 @@ export const ContractVersions = {
+         } }),
+     [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
+     [SupportedNetworks.Sepolia]: CanonicalAddresses,
++    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
+ };
+ /** Addresses of the head versions of all contracts */
+ export const ContractAddresses = Object.fromEntries(Object.entries(ContractVersions).map(([network, contracts]) => [

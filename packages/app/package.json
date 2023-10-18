@@ -21,6 +21,7 @@
     "ipfs-core": "0.14.3",
     "lodash.debounce": "^4.0.8",
     "lodash.memoize": "^4.1.2",
+    "patch-package": "^8.0.0",
     "ramda": "^0.28.0",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.1.0",
@@ -55,7 +56,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired --max_old_space_size=4096 build",
     "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [

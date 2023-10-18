@@ -7,6 +7,8 @@ export enum NETWORK {
   POLYGON = 137,
   ARBITRUM = 42161,
   AVALANCHE = 43114,
+  LINEA_GOERLI = 59140,
+  LINEA = 59144
 }
 
 export interface Coin {
@@ -27,6 +29,7 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   MATIC: { symbol: "MATIC", decimals: 18 },
   BNB: { symbol: "BNB", decimals: 18 },
   AVAX: { symbol: "AVAX", decimals: 18 },
+  LINEA_ETH: { symbol: "ETH", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -78,6 +81,18 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "avax",
     nativeAsset: NATIVE_ASSET.AVAX,
   },
+  [NETWORK.LINEA_GOERLI]: {
+    chainId: NETWORK.LINEA_GOERLI,
+    name: "linea-goerli-testnet",
+    shortName: "linea-testnet",
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
+  [NETWORK.LINEA]: {
+    chainId: NETWORK.LINEA,
+    name: "linea",
+    shortName: "linea",
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -89,4 +104,6 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.BSC]: NATIVE_ASSET.BNB,
   [NETWORK.ARBITRUM]: NATIVE_ASSET.ETH,
   [NETWORK.AVALANCHE]: NATIVE_ASSET.AVAX,
+  [NETWORK.LINEA_GOERLI]: NATIVE_ASSET.LINEA_ETH,
+  [NETWORK.LINEA]: NATIVE_ASSET.LINEA_ETH,
 }
