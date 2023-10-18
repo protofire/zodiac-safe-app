@@ -121,7 +121,7 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   },
   [NETWORK.LINEA_GOERLI]: {
     networkExplorerName: "Goerli Lineascan",
-    networkExplorerUrl: "https://goerli.linea.build/api",
+    networkExplorerUrl: "https://goerli.lineascan.build/",
     networkExplorerApiUrl: "https://api-testnet.lineascan.build/api",
     safeTransactionApi: "https://transaction-testnet.safe.linea.build/",
     safeUrl: "https://safe.linea.build/home?safe=linea-gor:",
@@ -129,12 +129,12 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     explorerApiKey: REACT_APP_ETHERSCAN_KEY,
   },
   [NETWORK.LINEA]: {
-    networkExplorerName: "Goerli Lineascan",
-    networkExplorerUrl: "https://goerli.linea.build/api",
-    networkExplorerApiUrl: "https://api-testnet.lineascan.build/api",
-    safeTransactionApi: "https://transaction-testnet.safe.linea.build/",
-    safeUrl: "https://safe.linea.build/home?safe=linea-gor:",
-    verifyContractUrl: "https://goerli.lineascan.build/verifyContract",
+    networkExplorerName: "Lineascan",
+    networkExplorerUrl: "https://lineascan.build/",
+    networkExplorerApiUrl: "https://api.lineascan.build/api",
+    safeTransactionApi: "https://transaction.safe.linea.build/",
+    safeUrl: "https://safe.linea.build/home?safe=linea:",
+    verifyContractUrl: "https://lineascan.build/verifyContract",
     explorerApiKey: REACT_APP_ETHERSCAN_KEY,
   },
 }
