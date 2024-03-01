@@ -7,6 +7,9 @@ export enum NETWORK {
   POLYGON = 137,
   ARBITRUM = 42161,
   AVALANCHE = 43114,
+  MOONBEAM = 1284,
+  MOONRIVER = 1285,
+  MOONBASE_ALPHA = 1287,
 }
 
 export interface Coin {
@@ -27,6 +30,9 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   MATIC: { symbol: "MATIC", decimals: 18 },
   BNB: { symbol: "BNB", decimals: 18 },
   AVAX: { symbol: "AVAX", decimals: 18 },
+  GLMR: { symbol: "GLMR", decimals: 18 },
+  MOVR: { symbol: "MOVR", decimals: 18 },
+  DEV: { symbol: "DEV", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -78,6 +84,24 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "avax",
     nativeAsset: NATIVE_ASSET.AVAX,
   },
+  [NETWORK.MOONBEAM]: {
+    chainId: NETWORK.MOONBEAM,
+    name: "moonbeam",
+    shortName: "glmr",
+    nativeAsset: NATIVE_ASSET.GLMR,
+  },
+  [NETWORK.MOONRIVER]: {
+    chainId: NETWORK.MOONRIVER,
+    name: "moonriver",
+    shortName: "movr",
+    nativeAsset: NATIVE_ASSET.MOVR,
+  },
+  [NETWORK.MOONBASE_ALPHA]: {
+    chainId: NETWORK.MOONBASE_ALPHA,
+    name: "moonbase",
+    shortName: "dev",
+    nativeAsset: NATIVE_ASSET.DEV,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -89,4 +113,7 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.BSC]: NATIVE_ASSET.BNB,
   [NETWORK.ARBITRUM]: NATIVE_ASSET.ETH,
   [NETWORK.AVALANCHE]: NATIVE_ASSET.AVAX,
+  [NETWORK.MOONBEAM]: NATIVE_ASSET.GLMR,
+  [NETWORK.MOONRIVER]: NATIVE_ASSET.MOVR,
+  [NETWORK.MOONBASE_ALPHA]: NATIVE_ASSET.DEV,
 }

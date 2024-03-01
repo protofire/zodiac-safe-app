@@ -2,38 +2,43 @@ import { NETWORK } from "./networks"
 
 const isDev = process.env.NODE_ENV === "development"
 const REACT_APP_ETHERSCAN_KEY = process.env.REACT_APP_ETHERSCAN_KEY
-if (!REACT_APP_ETHERSCAN_KEY) {
-  throw new Error("REACT_APP_ETHERSCAN_KEY is not set")
-}
+// if (!REACT_APP_ETHERSCAN_KEY) {
+//   throw new Error("REACT_APP_ETHERSCAN_KEY is not set")
+// }
 
 const REACT_APP_GNOSISSCAN_KEY = process.env.REACT_APP_GNOSISSCAN_KEY
-if (!isDev && !REACT_APP_GNOSISSCAN_KEY) {
-  throw new Error("REACT_APP_GNOSISSCAN_KEY is not set")
-}
+// if (!isDev && !REACT_APP_GNOSISSCAN_KEY) {
+//   throw new Error("REACT_APP_GNOSISSCAN_KEY is not set")
+// }
 
 const REACT_APP_POLYGONSCAN_KEY = process.env.REACT_APP_POLYGONSCAN_KEY
-if (!isDev && !REACT_APP_POLYGONSCAN_KEY) {
-  throw new Error("REACT_APP_POLYGONSCAN_KEY is not set")
-}
+// if (!isDev && !REACT_APP_POLYGONSCAN_KEY) {
+//   throw new Error("REACT_APP_POLYGONSCAN_KEY is not set")
+// }
 
 const REACT_APP_BSCSCAN_KEY = process.env.REACT_APP_BSCSCAN_KEY
-if (!isDev && !REACT_APP_BSCSCAN_KEY) {
-  throw new Error("REACT_APP_BSCSCAN_KEY is not set")
-}
+// if (!isDev && !REACT_APP_BSCSCAN_KEY) {
+//   throw new Error("REACT_APP_BSCSCAN_KEY is not set")
+// }
 
 const REACT_APP_OPTIMISTIC_ETHERSCAN_KEY = process.env.REACT_APP_OPTIMISTIC_ETHERSCAN_KEY
-if (!isDev && !REACT_APP_OPTIMISTIC_ETHERSCAN_KEY) {
-  throw new Error("REACT_APP_OPTIMISTIC_ETHERSCAN_KEY is not set")
-}
+// if (!isDev && !REACT_APP_OPTIMISTIC_ETHERSCAN_KEY) {
+//   throw new Error("REACT_APP_OPTIMISTIC_ETHERSCAN_KEY is not set")
+// }
 
 const REACT_APP_ARBISCAN_KEY = process.env.REACT_APP_ARBISCAN_KEY
-if (!isDev && !REACT_APP_ARBISCAN_KEY) {
-  throw new Error("REACT_APP_ARBISCAN_KEY is not set")
-}
+// if (!isDev && !REACT_APP_ARBISCAN_KEY) {
+//   throw new Error("REACT_APP_ARBISCAN_KEY is not set")
+// }
 
 const REACT_APP_SNOWTRACE_KEY = process.env.REACT_APP_SNOWTRACE_KEY
-if (!isDev && !REACT_APP_SNOWTRACE_KEY) {
-  throw new Error("REACT_APP_SNOWTRACE_KEY is not set")
+// if (!isDev && !REACT_APP_SNOWTRACE_KEY) {
+//   throw new Error("REACT_APP_SNOWTRACE_KEY is not set")
+// }
+
+const REACT_APP_MOONSCAN_KEY = process.env.REACT_APP_MOONSCAN_KEY
+if (!isDev && !REACT_APP_MOONSCAN_KEY) {
+  throw new Error("REACT_APP_MOONSCAN_KEY is not set")
 }
 
 interface ExplorerData {
@@ -118,6 +123,33 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     safeUrl: "https://app.safe.global/avax:",
     verifyContractUrl: "https://snowtrace.io/verifyContract",
     explorerApiKey: REACT_APP_SNOWTRACE_KEY,
+  },
+  [NETWORK.MOONBEAM]: {
+    networkExplorerName: "Moonbeam",
+    networkExplorerUrl: "https://moonscan.io/",
+    networkExplorerApiUrl: "https://api-moonbase.moonscan.io/api",
+    safeTransactionApi: "https://transaction.moonbase.staging.multisig.moonbeam.network/",
+    safeUrl: "https://moonbase.staging.multisig.moonbeam.network/home?safe=moonbase:",
+    verifyContractUrl: "https://api-moonbase.moonscan.io/api/verifyContract",
+    explorerApiKey: REACT_APP_MOONSCAN_KEY,
+  },
+  [NETWORK.MOONRIVER]: {
+    networkExplorerName: "Moonriver",
+    networkExplorerUrl: "https://goerli.linea.build/api",
+    networkExplorerApiUrl: "https://api-testnet.lineascan.build/api",
+    safeTransactionApi: "https://transaction-testnet.safe.linea.build/",
+    safeUrl: "https://safe.linea.build/home?safe=linea-gor:",
+    verifyContractUrl: "https://goerli.lineascan.build/verifyContract",
+    explorerApiKey: REACT_APP_MOONSCAN_KEY,
+  },
+  [NETWORK.MOONBASE_ALPHA]: {
+    networkExplorerName: "Moonbase Alpha",
+    networkExplorerUrl: "https://moonbase.moonscan.io/",
+    networkExplorerApiUrl: "https://api-moonbase.moonscan.io/api",
+    safeTransactionApi: "https://transaction.moonbase.staging.multisig.moonbeam.network/",
+    safeUrl: "https://moonbase.staging.multisig.moonbeam.network/home?safe=moonbase:",
+    verifyContractUrl: "https://api-moonbase.moonscan.io/api/verifyContract",
+    explorerApiKey: REACT_APP_MOONSCAN_KEY,
   },
 }
 
