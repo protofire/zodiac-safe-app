@@ -1,11 +1,6 @@
-import { NETWORK } from "utils/networks"
+import { NETWORK, NETWORK_API_URL_BASE } from "utils/networks"
 import { MonitoringSectionData } from "../sections/Monitoring"
-
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL
-
-if (BACKEND_API_URL == null) {
-  throw new Error("BACKEND_API_URL not set")
-}
+import { SafeInfo } from "@gnosis.pm/safe-apps-sdk"
 
 interface MonitoringCredentials {
   apiKey: string
@@ -91,8 +86,8 @@ export const setUpMonitoring = async (
     realityModuleAddress,
     notificationChannels,
   }
-
-  return fetch(BACKEND_API_URL + "/monitoring/notification", {
+  const backendApiUrl = NETWORK_API_URL_BASE[chainId]
+  return fetch(backendApiUrl + "/monitoring/notification", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -102,10 +97,13 @@ export const setUpMonitoring = async (
   })
 }
 
-export const validationCredentials = async (query: MonitoringCredentials) => {
-  const { apiKey, apiSecret } = query
+export const validationCredentials = async (
+  query: MonitoringCredentials & { safe: SafeInfo },
+) => {
+  const { apiKey, apiSecret, safe } = query
+  const backendApiUrl = NETWORK_API_URL_BASE[safe.chainId as NETWORK]
   return fetch(
-    `${BACKEND_API_URL}/monitoring/validation?apiKey=${apiKey}&apiSecret=${apiSecret}`,
+    `${backendApiUrl}/monitoring/validation?apiKey=${apiKey}&apiSecret=${apiSecret}`,
     {
       method: "GET",
       mode: "cors",

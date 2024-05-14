@@ -10,8 +10,8 @@ import * as snapshot from "../../../../../services/snapshot"
 import { deployRealityModule, RealityModuleParams } from "./moduleDeployment"
 import { setUpMonitoring } from "./monitoring"
 import { pinSnapshotSpace } from "./snapshot-space-pinning"
+import { MULTI_SEND_CONTRACT } from "utils/configs"
 
-const MULTI_SEND_CONTRACT = process.env.REACT_APP_MULTI_SEND_CONTRACT
 export const DETERMINISTIC_DEPLOYMENT_HELPER_ADDRESS =
   "0x0961F418E0B6efaA073004989EF1B2fd1bc4a41c" // needs to be deployed on all networks supported by the Reality Module
 
