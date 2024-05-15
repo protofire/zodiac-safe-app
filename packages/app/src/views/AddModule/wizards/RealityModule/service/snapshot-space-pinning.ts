@@ -1,8 +1,4 @@
-const BACKEND_API_URL = process.env.REACT_APP_BACKEND_API_URL
-
-if (BACKEND_API_URL == null) {
-  throw new Error("BACKEND_API_URL not set")
-}
+import { NETWORK, NETWORK_API_URL_BASE } from "utils/networks"
 
 interface RequestType {
   snapshotSpaceEnsName: string
@@ -17,7 +13,8 @@ interface Responds {
 export const pinSnapshotSpace: (request: RequestType) => Promise<Responds> = async (
   request,
 ) => {
-  const res = await fetch(BACKEND_API_URL + "/ipfs-pinning/snapshot-settings", {
+  const backendApiUrl = NETWORK_API_URL_BASE[request.chainId as NETWORK]
+  const res = await fetch(backendApiUrl + "/ipfs-pinning/snapshot-settings", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -37,6 +37,7 @@ import { ActionButton } from "../../../../components/ActionButton"
 import { ReactComponent as ArrowUpIcon } from "../../../../assets/icons/arrow-up-icon.svg"
 import { ReactComponent as CheckmarkIcon } from "../../../../assets/icons/checkmark-nofill.svg"
 import { useMonitoringValidation } from "../RealityModule/hooks/useMonitoringValidation"
+import { getInfuraId } from "utils/configs"
 
 const SECONDS_IN_DAY = 86400
 
@@ -202,14 +203,15 @@ export const KlerosRealityModuleModal = ({
 }: RealityModuleModalProps) => {
   const classes = useStyles()
   const { sdk, safe, provider } = useSafeAppsSDKWithProvider()
+  const infuraId = useMemo(() => getInfuraId(safe.chainId), [safe])
   // hack to resolve mainnet ENS
   const mainnetProvider = useMemo(
-    () => new ethers.providers.InfuraProvider(1, process.env.REACT_APP_INFURA_ID),
-    [],
+    () => new ethers.providers.InfuraProvider(1, infuraId),
+    [infuraId],
   )
   const goerliProvider = useMemo(
-    () => new ethers.providers.InfuraProvider(5, process.env.REACT_APP_INFURA_ID),
-    [],
+    () => new ethers.providers.InfuraProvider(5, infuraId),
+    [infuraId],
   )
 
   const bondToken = NETWORKS[safe.chainId as NETWORK].nativeAsset

@@ -106,3 +106,29 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.SEPOLIA]: NATIVE_ASSET.ETH,
   [NETWORK.BASE]: NATIVE_ASSET.ETH,
 }
+
+export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
+  [NETWORK.MAINNET]: "https://gnosis-safe.io",
+  [NETWORK.GOERLI]: "https://gnosis-safe.io",
+  [NETWORK.OPTIMISM]: "https://gnosis-safe.io",
+  [NETWORK.GNOSIS_CHAIN]: "https://gnosis-safe.io",
+  [NETWORK.POLYGON]: "https://gnosis-safe.io",
+  [NETWORK.BSC]: "https://gnosis-safe.io",
+  [NETWORK.ARBITRUM]: "https://gnosis-safe.io",
+  [NETWORK.AVALANCHE]: "https://gnosis-safe.io",
+  [NETWORK.SEPOLIA]: "https://gnosis-safe.io",
+  [NETWORK.BASE]: "https://gnosis-safe.io",
+}
+
+export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
+  [NETWORK.MAINNET]: "",
+  [NETWORK.GOERLI]: "",
+  [NETWORK.OPTIMISM]: "",
+  [NETWORK.GNOSIS_CHAIN]: "",
+  [NETWORK.POLYGON]: "",
+  [NETWORK.BSC]: "",
+  [NETWORK.ARBITRUM]: "",
+  [NETWORK.AVALANCHE]: "",
+  [NETWORK.SEPOLIA]: "",
+  [NETWORK.BASE]: "",
+}

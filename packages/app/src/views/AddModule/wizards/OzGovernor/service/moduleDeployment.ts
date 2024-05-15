@@ -2,11 +2,7 @@ import { deployAndSetUpModule, KnownContracts } from "@gnosis.pm/zodiac"
 import { ethers } from "ethers"
 import { enableModule, TxWitMeta } from "services"
 import SafeAppsSDK from "@gnosis.pm/safe-apps-sdk"
-
-const MULTI_SEND_CONTRACT = process.env.REACT_APP_MULTI_SEND_CONTRACT
-if (MULTI_SEND_CONTRACT == null) {
-  throw new Error("The MULTI_SEND_CONTRACT environment variable is not set.")
-}
+import { NETWORK, NETWORK_MULTI_SEND_CONTRACT } from "utils/networks"
 
 export type CreateTokenArgs = {
   name: string
@@ -50,6 +46,9 @@ const deployOzGovernorModule = async (
     throw new Error("Quorum percent must be between 0 and 100")
   }
 
+  const chainId = (await provider.getNetwork()).chainId
+  const MULTI_SEND_CONTRACT = NETWORK_MULTI_SEND_CONTRACT[chainId as NETWORK]
+
   const initData = {
     values: [
       safeAddress, // owner
@@ -78,7 +77,6 @@ const deployOzGovernorModule = async (
   }
 
   const saltNonce = Date.now().toString()
-  const chainId = (await provider.getNetwork()).chainId
 
   const { transaction: deploymentTx, expectedModuleAddress: expectedAddress } =
     deployAndSetUpModule(
