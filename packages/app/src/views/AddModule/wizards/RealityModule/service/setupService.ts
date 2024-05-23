@@ -10,7 +10,7 @@ import * as snapshot from "../../../../../services/snapshot"
 import { deployRealityModule, RealityModuleParams } from "./moduleDeployment"
 import { setUpMonitoring } from "./monitoring"
 import { pinSnapshotSpace } from "./snapshot-space-pinning"
-import { MULTI_SEND_CONTRACT } from "utils/configs"
+import { NETWORK_MULTI_SEND_CONTRACT } from "utils/networks"
 
 export const DETERMINISTIC_DEPLOYMENT_HELPER_ADDRESS =
   "0x0961F418E0B6efaA073004989EF1B2fd1bc4a41c" // needs to be deployed on all networks supported by the Reality Module
@@ -150,7 +150,7 @@ export const addSafeSnapToSettings = (
         {
           network: chainId,
           realityAddress: realityModuleAddress,
-          multisend: MULTI_SEND_CONTRACT,
+          multisend: NETWORK_MULTI_SEND_CONTRACT[chainId as NETWORK],
         },
       ],
     },
