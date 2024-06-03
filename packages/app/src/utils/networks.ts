@@ -12,6 +12,9 @@ export enum NETWORK {
   MOONBEAM = 1284,
   MOONRIVER = 1285,
   MOONBASE_ALPHA = 1287,
+  LINEA_GOERLI = 59140,
+  LINEA_SEPOLIA = 59141,
+  LINEA = 59144,
 }
 
 export interface Coin {
@@ -35,6 +38,7 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   GLMR: { symbol: "GLMR", decimals: 18 },
   MOVR: { symbol: "MOVR", decimals: 18 },
   DEV: { symbol: "DEV", decimals: 18 },
+  LINEA_ETH: { symbol: "ETH", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -132,6 +136,9 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.MOONBEAM]: NATIVE_ASSET.GLMR,
   [NETWORK.MOONRIVER]: NATIVE_ASSET.MOVR,
   [NETWORK.MOONBASE_ALPHA]: NATIVE_ASSET.DEV,
+  [NETWORK.LINEA_GOERLI]: NATIVE_ASSET.LINEA_ETH,
+  [NETWORK.LINEA]: NATIVE_ASSET.LINEA_ETH,
+  [NETWORK.LINEA_SEPOLIA]: NATIVE_ASSET.LINEA_ETH,
 }
 
 export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
@@ -145,9 +152,12 @@ export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
   [NETWORK.AVALANCHE]: "https://gnosis-safe.io",
   [NETWORK.SEPOLIA]: "https://gnosis-safe.io",
   [NETWORK.BASE]: "https://gnosis-safe.io",
-  [NETWORK.MOONBEAM]: "https://gnosis-safe.io",
-  [NETWORK.MOONRIVER]: "https://gnosis-safe.io",
-  [NETWORK.MOONBASE_ALPHA]: "https://gnosis-safe.io",
+  [NETWORK.MOONBEAM]: "http://localhost:3001/api",
+  [NETWORK.MOONRIVER]: "http://localhost:3001/api",
+  [NETWORK.MOONBASE_ALPHA]: "http://localhost:3001/api",
+  [NETWORK.LINEA_GOERLI]: "http://localhost:3001/api",
+  [NETWORK.LINEA]: "http://localhost:3001/api",
+  [NETWORK.LINEA_SEPOLIA]: "http://localhost:3001/api",
 }
 
 export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
@@ -161,7 +171,10 @@ export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
   [NETWORK.AVALANCHE]: "",
   [NETWORK.SEPOLIA]: "",
   [NETWORK.BASE]: "",
-  [NETWORK.MOONBEAM]: "",
-  [NETWORK.MOONRIVER]: "",
-  [NETWORK.MOONBASE_ALPHA]: "",
+  [NETWORK.MOONBEAM]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.MOONRIVER]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.MOONBASE_ALPHA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.LINEA_GOERLI]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.LINEA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.LINEA_SEPOLIA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
 }

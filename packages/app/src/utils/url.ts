@@ -2,7 +2,7 @@ import { SafeInfo } from "@gnosis.pm/safe-apps-sdk"
 import { NETWORK, NETWORKS } from "./networks"
 
 export function safeAppUrl(safeInfo: SafeInfo, appUrl: string) {
-  const base = "https://gnosis-safe.io"
+  const base = getBaseAppUrl(safeInfo)
   const prefix = chainPrefix(safeInfo)
   const pathname = `/app/${prefix}:${safeInfo.safeAddress}/apps`
   const params = new URLSearchParams({ appUrl })
@@ -11,14 +11,14 @@ export function safeAppUrl(safeInfo: SafeInfo, appUrl: string) {
 }
 
 export function rolesV1AppUrl(safeInfo: SafeInfo, rolesAddress: string) {
-  const base = "https://roles-v1.gnosisguild.org"
+  const base = getV1AppUrl(safeInfo)
   const prefix = chainPrefix(safeInfo)
 
   return new URL(`${base}/#/${prefix}:${rolesAddress}`).href
 }
 
 export function rolesV2AppUrl(safeInfo: SafeInfo, rolesAddress: string) {
-  const base = "https://roles.gnosisguild.org"
+  const base = getV2AppUrl(safeInfo)
   const prefix = chainPrefix(safeInfo)
 
   return new URL(`${base}/${prefix}:${rolesAddress}`).href
@@ -26,4 +26,58 @@ export function rolesV2AppUrl(safeInfo: SafeInfo, rolesAddress: string) {
 
 function chainPrefix(safeInfo: SafeInfo): string {
   return NETWORKS[safeInfo.chainId as NETWORK].shortName
+}
+
+const getBaseAppUrl = (safeInfo: SafeInfo): string | undefined => {
+  const chainId = safeInfo.chainId as NETWORK
+  switch (chainId) {
+    case NETWORK.MAINNET:
+    case NETWORK.GOERLI:
+    case NETWORK.OPTIMISM:
+    case NETWORK.GNOSIS_CHAIN:
+    case NETWORK.POLYGON:
+    case NETWORK.BSC:
+    case NETWORK.ARBITRUM:
+    case NETWORK.AVALANCHE:
+    case NETWORK.SEPOLIA:
+    case NETWORK.BASE:
+    default:
+      return "https://gnosis-safe.io"
+  }
+}
+
+const getV1AppUrl = (safeInfo: SafeInfo): string | undefined => {
+  const chainId = safeInfo.chainId as NETWORK
+  switch (chainId) {
+    case NETWORK.MAINNET:
+    case NETWORK.GOERLI:
+    case NETWORK.OPTIMISM:
+    case NETWORK.GNOSIS_CHAIN:
+    case NETWORK.POLYGON:
+    case NETWORK.BSC:
+    case NETWORK.ARBITRUM:
+    case NETWORK.AVALANCHE:
+    case NETWORK.SEPOLIA:
+    case NETWORK.BASE:
+    default:
+      return "https://roles-v1.gnosisguild.org"
+  }
+}
+
+const getV2AppUrl = (safeInfo: SafeInfo): string | undefined => {
+  const chainId = safeInfo.chainId as NETWORK
+  switch (chainId) {
+    case NETWORK.MAINNET:
+    case NETWORK.GOERLI:
+    case NETWORK.OPTIMISM:
+    case NETWORK.GNOSIS_CHAIN:
+    case NETWORK.POLYGON:
+    case NETWORK.BSC:
+    case NETWORK.ARBITRUM:
+    case NETWORK.AVALANCHE:
+    case NETWORK.SEPOLIA:
+    case NETWORK.BASE:
+    default:
+      return "https://roles.gnosisguild.org"
+  }
 }
