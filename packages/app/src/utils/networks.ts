@@ -120,6 +120,24 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "dev",
     nativeAsset: NATIVE_ASSET.DEV,
   },
+  [NETWORK.LINEA_GOERLI]: {
+    chainId: NETWORK.LINEA_GOERLI,
+    name: "linea-goerli-testnet",
+    shortName: "linea-testnet",
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
+  [NETWORK.LINEA]: {
+    chainId: NETWORK.LINEA,
+    name: "linea",
+    shortName: "linea",
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
+  [NETWORK.LINEA_SEPOLIA]: {
+    chainId: NETWORK.LINEA_SEPOLIA,
+    name: "linea",
+    shortName: "linea-sepolia",
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
