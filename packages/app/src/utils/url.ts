@@ -49,6 +49,10 @@ const getBaseAppUrl = (safeInfo: SafeInfo): string | undefined => {
 const getV1AppUrl = (safeInfo: SafeInfo): string | undefined => {
   const chainId = safeInfo.chainId as NETWORK
   switch (chainId) {
+    case NETWORK.LINEA_GOERLI:
+    case NETWORK.LINEA:
+    case NETWORK.LINEA_SEPOLIA:
+      return "https://roles.zodiac.safe.linea.build/"
     case NETWORK.MAINNET:
     case NETWORK.GOERLI:
     case NETWORK.OPTIMISM:
