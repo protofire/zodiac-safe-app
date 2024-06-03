@@ -9,6 +9,9 @@ export enum NETWORK {
   AVALANCHE = 43114,
   SEPOLIA = 11155111,
   BASE = 8453,
+  MOONBEAM = 1284,
+  MOONRIVER = 1285,
+  MOONBASE_ALPHA = 1287,
 }
 
 export interface Coin {
@@ -29,6 +32,9 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   MATIC: { symbol: "MATIC", decimals: 18 },
   BNB: { symbol: "BNB", decimals: 18 },
   AVAX: { symbol: "AVAX", decimals: 18 },
+  GLMR: { symbol: "GLMR", decimals: 18 },
+  MOVR: { symbol: "MOVR", decimals: 18 },
+  DEV: { symbol: "DEV", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -92,6 +98,24 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "base",
     nativeAsset: NATIVE_ASSET.ETH,
   },
+  [NETWORK.MOONBEAM]: {
+    chainId: NETWORK.MOONBEAM,
+    name: "moonbeam",
+    shortName: "glmr",
+    nativeAsset: NATIVE_ASSET.GLMR,
+  },
+  [NETWORK.MOONRIVER]: {
+    chainId: NETWORK.MOONRIVER,
+    name: "moonriver",
+    shortName: "movr",
+    nativeAsset: NATIVE_ASSET.MOVR,
+  },
+  [NETWORK.MOONBASE_ALPHA]: {
+    chainId: NETWORK.MOONBASE_ALPHA,
+    name: "moonbase",
+    shortName: "dev",
+    nativeAsset: NATIVE_ASSET.DEV,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -105,6 +129,9 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.AVALANCHE]: NATIVE_ASSET.AVAX,
   [NETWORK.SEPOLIA]: NATIVE_ASSET.ETH,
   [NETWORK.BASE]: NATIVE_ASSET.ETH,
+  [NETWORK.MOONBEAM]: NATIVE_ASSET.GLMR,
+  [NETWORK.MOONRIVER]: NATIVE_ASSET.MOVR,
+  [NETWORK.MOONBASE_ALPHA]: NATIVE_ASSET.DEV,
 }
 
 export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
@@ -118,6 +145,9 @@ export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
   [NETWORK.AVALANCHE]: "https://gnosis-safe.io",
   [NETWORK.SEPOLIA]: "https://gnosis-safe.io",
   [NETWORK.BASE]: "https://gnosis-safe.io",
+  [NETWORK.MOONBEAM]: "https://gnosis-safe.io",
+  [NETWORK.MOONRIVER]: "https://gnosis-safe.io",
+  [NETWORK.MOONBASE_ALPHA]: "https://gnosis-safe.io",
 }
 
 export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
@@ -131,4 +161,7 @@ export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
   [NETWORK.AVALANCHE]: "",
   [NETWORK.SEPOLIA]: "",
   [NETWORK.BASE]: "",
+  [NETWORK.MOONBEAM]: "",
+  [NETWORK.MOONRIVER]: "",
+  [NETWORK.MOONBASE_ALPHA]: "",
 }

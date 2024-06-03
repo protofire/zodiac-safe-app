@@ -29,7 +29,8 @@
     "react-select": "^5.4.0",
     "styled-components": "^5.3.5",
     "timeago-react": "^3.0.2",
-    "zodiac-ui-components": "^0.2.2"
+    "zodiac-ui-components": "^0.2.2",
+    "patch-package": "^8.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -55,7 +56,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired --max_old_space_size=4096 build",
     "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [

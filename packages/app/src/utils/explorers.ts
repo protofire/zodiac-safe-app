@@ -101,6 +101,33 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     verifyContractUrl: "https://basescan.org/verifyContract",
     explorerApiKey: process.env.REACT_APP_BASESCAN_KEY ?? '',
   },
+  [NETWORK.MOONBEAM]: {
+    networkExplorerName: "Moonbeam",
+    networkExplorerUrl: "https://moonscan.io/",
+    networkExplorerApiUrl: "https://api-moonbase.moonscan.io/api",
+    safeTransactionApi: "https://transaction.moonbase.staging.multisig.moonbeam.network/",
+    safeUrl: "https://moonbase.staging.multisig.moonbeam.network/home?safe=moonbase:",
+    verifyContractUrl: "https://api-moonbase.moonscan.io/api/verifyContract",
+    explorerApiKey: process.env.REACT_APP_MOONSCAN_KEY ?? '',
+  },
+  [NETWORK.MOONRIVER]: {
+    networkExplorerName: "Moonriver",
+    networkExplorerUrl: "https://goerli.linea.build/api",
+    networkExplorerApiUrl: "https://api-testnet.lineascan.build/api",
+    safeTransactionApi: "https://transaction-testnet.safe.linea.build/",
+    safeUrl: "https://safe.linea.build/home?safe=linea-gor:",
+    verifyContractUrl: "https://goerli.lineascan.build/verifyContract",
+    explorerApiKey: process.env.REACT_APP_MOONSCAN_KEY ?? '',
+  },
+  [NETWORK.MOONBASE_ALPHA]: {
+    networkExplorerName: "Moonbase Alpha",
+    networkExplorerUrl: "https://moonbase.moonscan.io/",
+    networkExplorerApiUrl: "https://api-moonbase.moonscan.io/api",
+    safeTransactionApi: "https://transaction.moonbase.staging.multisig.moonbeam.network/",
+    safeUrl: "https://moonbase.staging.multisig.moonbeam.network/home?safe=moonbase:",
+    verifyContractUrl: "https://api-moonbase.moonscan.io/api/verifyContract",
+    explorerApiKey: process.env.REACT_APP_MOONSCAN_KEY ?? '',
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {
