@@ -52,7 +52,7 @@ const getV1AppUrl = (safeInfo: SafeInfo): string | undefined => {
     case NETWORK.LINEA_GOERLI:
     case NETWORK.LINEA:
     case NETWORK.LINEA_SEPOLIA:
-      return "https://roles.zodiac.safe.linea.build/"
+      return "https://stg-zodiac-roles.safe.protofire.io/"
     case NETWORK.MAINNET:
     case NETWORK.GOERLI:
     case NETWORK.OPTIMISM:
