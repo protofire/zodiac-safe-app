@@ -11,6 +11,8 @@ index 6c63d37..f920040 100644
 +    Moonbeam = 1284,
 +    Moonriver = 1285,
 +    MoonbaseAlpha = 1287,
++    LineaMainnet = 59144,
++    LineaSepolia = 59141,
  }
  /**
   * Canonical addresses of head versions of each contract.
@@ -25,6 +27,8 @@ index 0c3d6a1..f77454c 100644
 +    SupportedNetworks[SupportedNetworks["Moonbeam"] = 1284] = "Moonbeam";
 +    SupportedNetworks[SupportedNetworks["Moonriver"] = 1285] = "Moonriver";
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
++    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
++    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
  })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
@@ -35,6 +39,8 @@ index 0c3d6a1..f77454c 100644
 +    [SupportedNetworks.Moonbeam]: CanonicalAddresses,
 +    [SupportedNetworks.Moonriver]: CanonicalAddresses,
 +    [SupportedNetworks.Moonbase]: CanonicalAddresses,
++    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
++    [SupportedNetworks.LineaSepolia]: CanonicalAddresses,
  };
  /** Addresses of the head versions of all contracts */
  exports.ContractAddresses = Object.fromEntries(Object.entries(exports.ContractVersions).map(([network, contracts]) => [
@@ -51,6 +57,8 @@ index 6c63d37..f920040 100644
 +    Moonbeam = 1284,
 +    Moonriver = 1285,
 +    MoonbaseAlpha = 1287,
++    LineaMainnet = 59144,
++    LineaSepolia = 59141,
  }
  /**
   * Canonical addresses of head versions of each contract.
@@ -65,6 +73,8 @@ index 76f50f3..ea47885 100644
 +    SupportedNetworks[SupportedNetworks["Moonbeam"] = 1284] = "Moonbeam";
 +    SupportedNetworks[SupportedNetworks["Moonriver"] = 1285] = "Moonriver";
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
++    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
++    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
  })(SupportedNetworks || (SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
@@ -75,6 +85,8 @@ index 76f50f3..ea47885 100644
 +    [SupportedNetworks.Moonbeam]: CanonicalAddresses,
 +    [SupportedNetworks.Moonriver]: CanonicalAddresses,
 +    [SupportedNetworks.Moonbase]: CanonicalAddresses,
++    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
++    [SupportedNetworks.LineaSepolia]: CanonicalAddresses,
  };
  /** Addresses of the head versions of all contracts */
  export const ContractAddresses = Object.fromEntries(Object.entries(ContractVersions).map(([network, contracts]) => [
