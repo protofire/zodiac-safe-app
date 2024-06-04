@@ -1,8 +1,8 @@
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
-index 6c63d37..f920040 100644
+index 6c63d37..1f12953 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
 +++ b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
-@@ -12,7 +12,10 @@ export declare enum SupportedNetworks {
+@@ -12,7 +12,12 @@ export declare enum SupportedNetworks {
      BinanceSmartChain = 56,
      HardhatNetwork = 31337,
      LineaGoerli = 59140,
@@ -17,10 +17,10 @@ index 6c63d37..f920040 100644
  /**
   * Canonical addresses of head versions of each contract.
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
-index 0c3d6a1..f77454c 100644
+index 0c3d6a1..b0bb75c 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
 +++ b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
-@@ -82,6 +82,9 @@ var SupportedNetworks;
+@@ -82,6 +82,11 @@ var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
      SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
      SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
@@ -32,7 +32,7 @@ index 0c3d6a1..f77454c 100644
  })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -208,6 +211,9 @@ exports.ContractVersions = {
+@@ -208,6 +213,11 @@ exports.ContractVersions = {
          } }),
      [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
      [SupportedNetworks.Sepolia]: CanonicalAddresses,
@@ -45,10 +45,10 @@ index 0c3d6a1..f77454c 100644
  /** Addresses of the head versions of all contracts */
  exports.ContractAddresses = Object.fromEntries(Object.entries(exports.ContractVersions).map(([network, contracts]) => [
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
-index 6c63d37..f920040 100644
+index 6c63d37..1f12953 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
 +++ b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
-@@ -12,7 +12,10 @@ export declare enum SupportedNetworks {
+@@ -12,7 +12,12 @@ export declare enum SupportedNetworks {
      BinanceSmartChain = 56,
      HardhatNetwork = 31337,
      LineaGoerli = 59140,
@@ -63,10 +63,10 @@ index 6c63d37..f920040 100644
  /**
   * Canonical addresses of head versions of each contract.
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
-index 76f50f3..ea47885 100644
+index 76f50f3..3222b8b 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
 +++ b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
-@@ -53,6 +53,9 @@ export var SupportedNetworks;
+@@ -53,6 +53,11 @@ export var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
      SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
      SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
@@ -78,7 +78,7 @@ index 76f50f3..ea47885 100644
  })(SupportedNetworks || (SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -179,6 +182,9 @@ export const ContractVersions = {
+@@ -179,6 +184,11 @@ export const ContractVersions = {
          } }),
      [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
      [SupportedNetworks.Sepolia]: CanonicalAddresses,
