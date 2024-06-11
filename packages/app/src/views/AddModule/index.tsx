@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { makeStyles, Typography } from "@material-ui/core"
 import { ZodiacPaper } from "zodiac-ui-components"
 import { ModuleButton } from "./ModuleButton"
@@ -56,6 +56,17 @@ export const AddModulesView = () => {
   const { safe } = useSafeAppsSDK()
   const hasModules = useRootSelector((state) => getModulesList(state).length > 0)
   const [module, setModule] = useState<ModuleType>()
+
+  const isRoleAvailable = useMemo(() => {
+    switch (safe.chainId) {
+      case NETWORK.LINEA:
+      case NETWORK.LINEA_SEPOLIA:
+      case NETWORK.LINEA_GOERLI:
+        return true
+      default:
+        return false
+    }
+  }, [safe.chainId])
 
   const handleSubmit = () => {
     dispatch(fetchPendingModules(safe))
@@ -125,13 +136,13 @@ export const AddModulesView = () => {
           available={!!ContractAddresses[KnownContracts.EXIT_ERC20]}
         />
 
-        <ModuleButton
+        {isRoleAvailable && (<ModuleButton
           title="Roles Modifier"
           description="Allows avatars to enforce granular, role-based, permissions for attached modules"
           icon="roles"
           onClick={() => setModule(ModuleType.ROLES_V2)}
           available={!!ContractAddresses[KnownContracts.ROLES_V2]}
-        />
+        />)}     
 
         <ModuleButton
           title="Reality Module"
@@ -189,14 +200,14 @@ export const AddModulesView = () => {
           available={!!ContractAddresses[KnownContracts.CONNEXT]}
         />
 
-        <ModuleButton
+        {isRoleAvailable && (<ModuleButton
           title="Roles Modifier v1"
           description="Legacy version of the Roles Modifier"
           icon="roles"
           deprecated
           onClick={() => setModule(ModuleType.ROLES_V1)}
           available={!!ContractAddresses[KnownContracts.ROLES_V1]}
-        />
+        />)}
 
         <ModuleButton
           title="Custom Module"
