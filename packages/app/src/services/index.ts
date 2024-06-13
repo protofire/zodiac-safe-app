@@ -238,6 +238,10 @@ export function getConnextAddress(chainId: number): string {
       return "0xEE9deC2712cCE65174B561151701Bf54b99C24C8"
     case NETWORK.LINEA_GOERLI:
       return "0x7dE07b9De0bf0FABf31A188DE1527034b2aF36dB"
+    case NETWORK.LINEA_SEPOLIA:
+      return "0x8A718Bc87bb71A9593A0361e7DB4BF6E1FB48d29"
+    case NETWORK.LINEA:
+      return "0x8A718Bc87bb71A9593A0361e7DB4BF6E1FB48d29"
   }
   return ""
 }
