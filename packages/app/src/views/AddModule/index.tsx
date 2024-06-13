@@ -68,6 +68,15 @@ export const AddModulesView = () => {
     }
   }, [safe.chainId])
 
+  const isConnextAvailable = useMemo(() => {
+    switch (safe.chainId) {
+      case NETWORK.LINEA:
+        return true
+      default:
+        return false
+    }
+  }, [safe.chainId])
+
   const handleSubmit = () => {
     dispatch(fetchPendingModules(safe))
     dispatch(setModuleAdded(true))
@@ -192,13 +201,15 @@ export const AddModulesView = () => {
           available={!!ContractAddresses[KnownContracts.OZ_GOVERNOR]}
         />
 
-        <ModuleButton
+        
+
+        {isConnextAvailable && (<ModuleButton
           title="Connext Module"
           description="Enables an address on one chain to control an avatar on another chain using Connext as the messaging layer."
           icon="connext"
           onClick={() => setModule(ModuleType.CONNEXT)}
           available={!!ContractAddresses[KnownContracts.CONNEXT]}
-        />
+        />)}
 
         {isRoleAvailable && (<ModuleButton
           title="Roles Modifier v1"
