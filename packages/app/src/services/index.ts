@@ -236,6 +236,8 @@ export function getConnextAddress(chainId: number): string {
       return "0x8f7492DE823025b4CfaAB1D34c58963F2af5DEDA"
     case NETWORK.ARBITRUM:
       return "0xEE9deC2712cCE65174B561151701Bf54b99C24C8"
+    case NETWORK.LINEA_GOERLI:
+      return "0x7dE07b9De0bf0FABf31A188DE1527034b2aF36dB"
   }
   return ""
 }
