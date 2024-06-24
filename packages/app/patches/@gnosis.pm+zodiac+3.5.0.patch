@@ -1,8 +1,8 @@
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
-index 6c63d37..1f12953 100644
+index 6c63d37..b664d7b 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
 +++ b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.d.ts
-@@ -12,7 +12,12 @@ export declare enum SupportedNetworks {
+@@ -12,7 +12,13 @@ export declare enum SupportedNetworks {
      BinanceSmartChain = 56,
      HardhatNetwork = 31337,
      LineaGoerli = 59140,
@@ -13,14 +13,15 @@ index 6c63d37..1f12953 100644
 +    MoonbaseAlpha = 1287,
 +    LineaMainnet = 59144,
 +    LineaSepolia = 59141,
++    Amoy = 80002,
  }
  /**
   * Canonical addresses of head versions of each contract.
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
-index 0c3d6a1..b0bb75c 100644
+index 0c3d6a1..a12e709 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
 +++ b/node_modules/@gnosis.pm/zodiac/dist/cjs/contracts.js
-@@ -82,6 +82,11 @@ var SupportedNetworks;
+@@ -82,6 +82,12 @@ var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
      SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
      SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
@@ -29,10 +30,11 @@ index 0c3d6a1..b0bb75c 100644
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
 +    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
 +    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
++    SupportedNetworks[SupportedNetworks["Amoy"] = 80001] = "Amoy";
  })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -208,6 +213,11 @@ exports.ContractVersions = {
+@@ -208,6 +214,12 @@ exports.ContractVersions = {
          } }),
      [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
      [SupportedNetworks.Sepolia]: CanonicalAddresses,
@@ -41,14 +43,15 @@ index 0c3d6a1..b0bb75c 100644
 +    [SupportedNetworks.Moonbase]: CanonicalAddresses,
 +    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
 +    [SupportedNetworks.LineaSepolia]: CanonicalAddresses,
++    [SupportedNetworks.Amoy]: CanonicalAddresses,
  };
  /** Addresses of the head versions of all contracts */
  exports.ContractAddresses = Object.fromEntries(Object.entries(exports.ContractVersions).map(([network, contracts]) => [
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
-index 6c63d37..1f12953 100644
+index 6c63d37..b664d7b 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
 +++ b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.d.ts
-@@ -12,7 +12,12 @@ export declare enum SupportedNetworks {
+@@ -12,7 +12,13 @@ export declare enum SupportedNetworks {
      BinanceSmartChain = 56,
      HardhatNetwork = 31337,
      LineaGoerli = 59140,
@@ -59,14 +62,15 @@ index 6c63d37..1f12953 100644
 +    MoonbaseAlpha = 1287,
 +    LineaMainnet = 59144,
 +    LineaSepolia = 59141,
++    Amoy = 80002,
  }
  /**
   * Canonical addresses of head versions of each contract.
 diff --git a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
-index 76f50f3..3222b8b 100644
+index 76f50f3..397da8e 100644
 --- a/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
 +++ b/node_modules/@gnosis.pm/zodiac/dist/esm/contracts.js
-@@ -53,6 +53,11 @@ export var SupportedNetworks;
+@@ -53,6 +53,12 @@ export var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["HardhatNetwork"] = 31337] = "HardhatNetwork";
      SupportedNetworks[SupportedNetworks["LineaGoerli"] = 59140] = "LineaGoerli";
      SupportedNetworks[SupportedNetworks["Sepolia"] = 11155111] = "Sepolia";
@@ -75,10 +79,11 @@ index 76f50f3..3222b8b 100644
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
 +    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
 +    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
++    SupportedNetworks[SupportedNetworks["Amoy"] = 80001] = "Amoy";
  })(SupportedNetworks || (SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -179,6 +184,11 @@ export const ContractVersions = {
+@@ -179,6 +185,12 @@ export const ContractVersions = {
          } }),
      [SupportedNetworks.LineaGoerli]: CanonicalAddresses,
      [SupportedNetworks.Sepolia]: CanonicalAddresses,
@@ -87,6 +92,7 @@ index 76f50f3..3222b8b 100644
 +    [SupportedNetworks.Moonbase]: CanonicalAddresses,
 +    [SupportedNetworks.LineaMainnet]: CanonicalAddresses,
 +    [SupportedNetworks.LineaSepolia]: CanonicalAddresses,
++    [SupportedNetworks.Amoy]: CanonicalAddresses,
  };
  /** Addresses of the head versions of all contracts */
  export const ContractAddresses = Object.fromEntries(Object.entries(ContractVersions).map(([network, contracts]) => [

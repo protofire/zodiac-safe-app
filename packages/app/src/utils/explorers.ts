@@ -155,6 +155,15 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     verifyContractUrl: "https://sepolia.lineascan.build/verifyContract",
     explorerApiKey: process.env.REACT_APP_LINEASCAN_KEY ?? '',
   },
+  [NETWORK.AMOY]: {
+    networkExplorerName: "Polygonscan Amoy Testnet",
+    networkExplorerUrl: "https://amoy.polygonscan.com/",
+    networkExplorerApiUrl: "https://api-amoy.polygonscan.com/api",
+    safeTransactionApi: "https://transaction-testnet.polygon-test.safe.protofire.io/",
+    safeUrl: "https://polygon-test.safe.protofire.io/home?safe=polygonamoy:",
+    verifyContractUrl: "https://amoy.polygonscan.com/verifyContract",
+    explorerApiKey: process.env.REACT_APP_LINEASCAN_KEY ?? '',
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {
