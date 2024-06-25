@@ -30,7 +30,7 @@ index 0c3d6a1..a12e709 100644
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
 +    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
 +    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
-+    SupportedNetworks[SupportedNetworks["Amoy"] = 80001] = "Amoy";
++    SupportedNetworks[SupportedNetworks["Amoy"] = 80002] = "Amoy";
  })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
@@ -79,7 +79,7 @@ index 76f50f3..397da8e 100644
 +    SupportedNetworks[SupportedNetworks["Moonbase"] = 1287] = "Moonbase";
 +    SupportedNetworks[SupportedNetworks["LineaMainnet"] = 59144] = "LineaMainnet";
 +    SupportedNetworks[SupportedNetworks["LineaSepolia"] = 59141] = "LineaSepolia";
-+    SupportedNetworks[SupportedNetworks["Amoy"] = 80001] = "Amoy";
++    SupportedNetworks[SupportedNetworks["Amoy"] = 80002] = "Amoy";
  })(SupportedNetworks || (SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
