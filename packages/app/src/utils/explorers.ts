@@ -155,6 +155,15 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     verifyContractUrl: "https://sepolia.lineascan.build/verifyContract",
     explorerApiKey: process.env.REACT_APP_LINEASCAN_KEY ?? '',
   },
+  [NETWORK.PLASMA_TESTNET]: {
+    networkExplorerName: "Plasmascan",
+    networkExplorerUrl: "https://testnet.plasmascan.to/",
+    networkExplorerApiUrl: "https://testnet.plasmascan.to/api",
+    safeTransactionApi: "https://transaction-plasma-testnet.stage.safe.protofire.io/api",
+    safeUrl: "https://app.safe.protofire.io/plasma-testnet",
+    verifyContractUrl: "https://testnet.plasmascan.to/verifycontract",
+    explorerApiKey: process.env.REACT_APP_PLASMASCAN_KEY ?? '',
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {
