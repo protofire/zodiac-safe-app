@@ -15,6 +15,7 @@ export enum NETWORK {
   LINEA_GOERLI = 59140,
   LINEA_SEPOLIA = 59141,
   LINEA = 59144,
+  PLASMA_TESTNET = 9746,
 }
 
 export interface Coin {
@@ -39,6 +40,7 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   MOVR: { symbol: "MOVR", decimals: 18 },
   DEV: { symbol: "DEV", decimals: 18 },
   LINEA_ETH: { symbol: "ETH", decimals: 18 },
+  XPL: { symbol: "XPL", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -138,6 +140,12 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "linea-sepolia",
     nativeAsset: NATIVE_ASSET.LINEA_ETH,
   },
+  [NETWORK.PLASMA_TESTNET]: {
+    chainId: NETWORK.PLASMA_TESTNET,
+    name: "plasma",
+    shortName: "plasma-testnet",
+    nativeAsset: NATIVE_ASSET.XPL,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -157,6 +165,7 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.LINEA_GOERLI]: NATIVE_ASSET.LINEA_ETH,
   [NETWORK.LINEA]: NATIVE_ASSET.LINEA_ETH,
   [NETWORK.LINEA_SEPOLIA]: NATIVE_ASSET.LINEA_ETH,
+  [NETWORK.PLASMA_TESTNET]: NATIVE_ASSET.XPL,
 }
 
 export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
@@ -176,6 +185,7 @@ export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
   [NETWORK.LINEA_GOERLI]: "http://localhost:3001/api",
   [NETWORK.LINEA]: "http://localhost:3001/api",
   [NETWORK.LINEA_SEPOLIA]: "http://localhost:3001/api",
+  [NETWORK.PLASMA_TESTNET]: "http://localhost:3001/api",
 }
 
 export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
@@ -195,4 +205,5 @@ export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
   [NETWORK.LINEA_GOERLI]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.LINEA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.LINEA_SEPOLIA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.PLASMA_TESTNET]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
 }
