@@ -169,7 +169,7 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     networkExplorerUrl: "https://plasmascan.to/",
     networkExplorerApiUrl: "https://api.routescan.io/v2/network/mainnet/evm/9745/etherscan/api",
     safeTransactionApi: "https://transaction-plasma.safe.protofire.io/api",
-    safeUrl: "https://app.safe.protofire.io/plasma",
+    safeUrl: "https://app.safe.protofire.io/plasma:",
     verifyContractUrl: "https://plasmascan.to/verifycontract",
     explorerApiKey: process.env.REACT_APP_PLASMASCAN_KEY ?? '',
   },
