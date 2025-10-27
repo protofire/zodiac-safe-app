@@ -16,6 +16,7 @@ export enum NETWORK {
   LINEA_SEPOLIA = 59141,
   LINEA = 59144,
   PLASMA_TESTNET = 9746,
+  PLASMA = 9745,
 }
 
 export interface Coin {
@@ -146,6 +147,12 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "plasma-testnet",
     nativeAsset: NATIVE_ASSET.XPL,
   },
+  [NETWORK.PLASMA]: {
+    chainId: NETWORK.PLASMA,
+    name: "plasma",
+    shortName: "plasma",
+    nativeAsset: NATIVE_ASSET.XPL,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -166,6 +173,7 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.LINEA]: NATIVE_ASSET.LINEA_ETH,
   [NETWORK.LINEA_SEPOLIA]: NATIVE_ASSET.LINEA_ETH,
   [NETWORK.PLASMA_TESTNET]: NATIVE_ASSET.XPL,
+  [NETWORK.PLASMA]: NATIVE_ASSET.XPL,
 }
 
 export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
@@ -186,6 +194,7 @@ export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
   [NETWORK.LINEA]: "http://localhost:3001/api",
   [NETWORK.LINEA_SEPOLIA]: "http://localhost:3001/api",
   [NETWORK.PLASMA_TESTNET]: "http://localhost:3001/api",
+  [NETWORK.PLASMA]: "http://localhost:3001/api",
 }
 
 export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
@@ -206,4 +215,5 @@ export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
   [NETWORK.LINEA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.LINEA_SEPOLIA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.PLASMA_TESTNET]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.PLASMA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
 }
