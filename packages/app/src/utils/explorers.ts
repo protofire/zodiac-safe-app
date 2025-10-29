@@ -180,7 +180,6 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     safeTransactionApi: "https://transaction-testnet.safe.zetachain.com/api",
     safeUrl: "https://safe.zetachain.com/home?safe=zetachain-athens:",
     verifyContractUrl: "https://testnet.zetascan.com/contract-verification",
-    explorerApiKey: process.env.REACT_APP_ZETACHAINSCAN_KEY ?? '',
   },
   [NETWORK.ZETACHAIN]: {
     networkExplorerName: "Zetascan",
@@ -189,7 +188,6 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     safeTransactionApi: "https://transaction.safe.zetachain.com/api",
     safeUrl: "https://safe.zetachain.com/home?safe=zetachain-mainnet:",
     verifyContractUrl: "https://zetascan.com/contract-verification",
-    explorerApiKey: process.env.REACT_APP_ZETACHAINSCAN_KEY ?? '',
   },
 }
 
