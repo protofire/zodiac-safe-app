@@ -17,6 +17,8 @@ export enum NETWORK {
   LINEA = 59144,
   PLASMA_TESTNET = 9746,
   PLASMA = 9745,
+  ZETACHAIN_TESTNET = 7001,
+  ZETACHAIN = 7000,
 }
 
 export interface Coin {
@@ -42,6 +44,7 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   DEV: { symbol: "DEV", decimals: 18 },
   LINEA_ETH: { symbol: "ETH", decimals: 18 },
   XPL: { symbol: "XPL", decimals: 18 },
+  ZETA: { symbol: "ZETA", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -153,6 +156,18 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: "plasma",
     nativeAsset: NATIVE_ASSET.XPL,
   },
+  [NETWORK.ZETACHAIN_TESTNET]: {
+    chainId: NETWORK.ZETACHAIN_TESTNET,
+    name: "zetachain",
+    shortName: "zetachain-testnet",
+    nativeAsset: NATIVE_ASSET.ZETA,
+  },
+  [NETWORK.ZETACHAIN]: {
+    chainId: NETWORK.ZETACHAIN,
+    name: "zetachain",
+    shortName: "zetachain-mainnet",
+    nativeAsset: NATIVE_ASSET.ZETA,
+  },
 }
 
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
@@ -174,6 +189,8 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.LINEA_SEPOLIA]: NATIVE_ASSET.LINEA_ETH,
   [NETWORK.PLASMA_TESTNET]: NATIVE_ASSET.XPL,
   [NETWORK.PLASMA]: NATIVE_ASSET.XPL,
+  [NETWORK.ZETACHAIN_TESTNET]: NATIVE_ASSET.ZETA,
+  [NETWORK.ZETACHAIN]: NATIVE_ASSET.ZETA,
 }
 
 export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
@@ -195,6 +212,8 @@ export const NETWORK_API_URL_BASE: Record<NETWORK, string> = {
   [NETWORK.LINEA_SEPOLIA]: "http://localhost:3001/api",
   [NETWORK.PLASMA_TESTNET]: "http://localhost:3001/api",
   [NETWORK.PLASMA]: "http://localhost:3001/api",
+  [NETWORK.ZETACHAIN_TESTNET]: "http://localhost:3001/api",
+  [NETWORK.ZETACHAIN]: "http://localhost:3001/api",
 }
 
 export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
@@ -216,4 +235,6 @@ export const NETWORK_MULTI_SEND_CONTRACT: Record<NETWORK, string> = {
   [NETWORK.LINEA_SEPOLIA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.PLASMA_TESTNET]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
   [NETWORK.PLASMA]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.ZETACHAIN_TESTNET]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
+  [NETWORK.ZETACHAIN]: "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761",
 }
