@@ -364,7 +364,7 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.FLOW_EVM_TESTNET]: {
     networkExplorerName: 'Flow EVM Testnet Explorer',
     networkExplorerUrl: 'https://evm-testnet.flowscan.io',
-    networkExplorerApiUrl: 'https://evm-testnet.flowscan.io',
+    networkExplorerApiUrl: 'https://evm-testnet.flowscan.io/api',
     safeTransactionApi: 'https://transaction-testnet.safe.flow.com/',
     stageSafeTransactionApi: 'https://transaction-testnet.staging.safe.flow.com/',
     safeUrl: 'https://safe.flow.com/flow-testnet:',
