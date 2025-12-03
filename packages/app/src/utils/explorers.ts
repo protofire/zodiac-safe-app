@@ -1,15 +1,15 @@
 import { NETWORK } from './networks'
+import { ETHERSCAN_API_KEY, IS_PRODUCTION } from './constants.ts'
 
 interface ExplorerData {
   networkExplorerName: string
   networkExplorerUrl: string
   networkExplorerApiUrl: string
   safeTransactionApi: string
+  stageSafeTransactionApi?: string
   safeUrl: string
   verifyContractUrl: string
 }
-
-const ETHERSCAN_API_KEY = '6RJ8KT4B1S9V7E3CIYECNY7HFW8IPWQ3C4'
 
 export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.MAINNET]: {
@@ -95,9 +95,9 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.LINEA]: {
     networkExplorerName: 'Lineascan',
     networkExplorerUrl: 'https://lineascan.build',
-    networkExplorerApiUrl: 'https://api.lineascan.build/api',
-    safeTransactionApi: 'https://safe-transaction-linea.safe.global/',
-    safeUrl: 'https://app.safe.global/linea:',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.safe.linea.build/',
+    safeUrl: 'https://safe.linea.build/linea:',
     verifyContractUrl: 'https://lineascan.build/verifyContract',
   },
   [NETWORK.LINEA_GOERLI]: {
@@ -135,17 +135,19 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.MANTLE]: {
     networkExplorerName: 'Mantlescan',
     networkExplorerUrl: 'https://mantlescan.xyz',
-    networkExplorerApiUrl: 'https://api.mantlescan.xyz/api',
-    safeTransactionApi: 'https://safe-transaction-mantle.safe.global/',
-    safeUrl: 'https://app.safe.global/mantle:',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.multisig.mantle.xyz/',
+    stageSafeTransactionApi: 'https://transaction.staging.multisig.mantle.xyz/',
+    safeUrl: 'https://multisig.mantle.xyz/mantle:',
     verifyContractUrl: 'https://mantlescan.xyz/verifyContract',
   },
   [NETWORK.BERACHAIN]: {
     networkExplorerName: 'Berascan',
     networkExplorerUrl: 'https://berascan.com',
-    networkExplorerApiUrl: 'https://api.berascan.com/api',
-    safeTransactionApi: 'https://safe-transaction-berachain.safe.global/',
-    safeUrl: 'https://app.safe.global/berachain:',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.safe.berachain.com/',
+    stageSafeTransactionApi: 'https://transaction.staging.safe.berachain.com/',
+    safeUrl: 'https://safe.berachain.com/berachain:',
     verifyContractUrl: 'https://berascan.com/verifyContract',
   },
   [NETWORK.SONIC]: {
@@ -167,18 +169,20 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.BOB]: {
     networkExplorerName: 'Bobscout',
     networkExplorerUrl: 'https://explorer.gobob.xyz',
-    networkExplorerApiUrl: 'https://api.gobob.xyz/api',
-    safeTransactionApi: 'https://safe-transaction-bob.safe.global/',
-    safeUrl: 'https://app.safe.global/bob:',
-    verifyContractUrl: 'https://explorer.gobob.xyz/verifyContract',
+    networkExplorerApiUrl: 'https://explorer-bob-mainnet-0.t.conduit.xyz/api',
+    safeTransactionApi: 'https://transaction.safe.gobob.xyz/',
+    stageSafeTransactionApi: 'https://transaction.staging.safe.gobob.xyz/',
+    safeUrl: 'https://safe.gobob.xyz/bob:',
+    verifyContractUrl: 'https://explorer.gobob.xyz/contract-verification',
   },
   [NETWORK.HYPER_EVM]: {
     networkExplorerName: 'Wanscan',
     networkExplorerUrl: 'https://purrsec.com',
     networkExplorerApiUrl: 'https://api.purrsec.com/api',
-    safeTransactionApi: 'https://safe-transaction-hyper-evm.safe.global/',
-    safeUrl: 'https://app.safe.global/hyperevm:',
-    verifyContractUrl: '',
+    safeTransactionApi: 'https://transaction-hyperevm.safe.protofire.io/',
+    stageSafeTransactionApi: 'https://transaction-hyperevm.stage.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/hyper_evm:',
+    verifyContractUrl: 'https://purrsec.com/verify',
   },
   [NETWORK.WORLD_CHAIN]: {
     networkExplorerName: 'Worldscan',
@@ -198,11 +202,11 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   },
   [NETWORK.INK]: {
     networkExplorerName: 'Ink Explorer',
-    networkExplorerUrl: 'https://explorer.ink',
-    networkExplorerApiUrl: 'https://api.ink/api',
-    safeTransactionApi: 'https://safe-transaction-ink.safe.global/',
-    safeUrl: 'https://app.safe.global/ink:',
-    verifyContractUrl: 'https://explorer.ink/verifyContract',
+    networkExplorerUrl: 'https://explorer.inkonchain.com',
+    networkExplorerApiUrl: 'https://explorer.inkonchain.com/api',
+    safeTransactionApi: 'https://transaction-ink.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/ink:',
+    verifyContractUrl: 'https://explorer.inkonchain.com/contract-verification',
   },
   [NETWORK.HEMI]: {
     networkExplorerName: 'Hemi Explorer',
@@ -238,11 +242,11 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   },
   [NETWORK.UNICHAIN]: {
     networkExplorerName: 'Unichain Explorer',
-    networkExplorerUrl: 'https://explorer.unichain.world',
-    networkExplorerApiUrl: 'https://api.unichain.world/api',
-    safeTransactionApi: 'https://safe-transaction-unichain.safe.global/',
-    safeUrl: 'https://app.safe.global/unichain:',
-    verifyContractUrl: 'https://explorer.unichain.world/verifyContract',
+    networkExplorerUrl: 'https://unichain.blockscout.com',
+    networkExplorerApiUrl: 'https://unichain.blockscout.com/api',
+    safeTransactionApi: 'https://transaction-unichain.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/unichain:',
+    verifyContractUrl: 'https://unichain.blockscout.com/contract-verification',
   },
   [NETWORK.ZKSYNC]: {
     networkExplorerName: 'zkScan',
@@ -255,9 +259,9 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
   [NETWORK.SCROLL]: {
     networkExplorerName: 'Scrollscan',
     networkExplorerUrl: 'https://scrollscan.com',
-    networkExplorerApiUrl: 'https://api.scrollscan.com/api',
-    safeTransactionApi: 'https://safe-transaction-scroll.safe.global/',
-    safeUrl: 'https://app.safe.global/scroll:',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction-scroll.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/scr:',
     verifyContractUrl: 'https://scrollscan.com/verifyContract',
   },
   [NETWORK.AURORA]: {
@@ -276,6 +280,96 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     safeUrl: 'https://app.safe.global/chi:',
     verifyContractUrl: 'https://blockscout.chiadochain.net/verifyContract',
   },
+  [NETWORK.MOONBEAM]: {
+    networkExplorerName: 'Moonbeam Explorer',
+    networkExplorerUrl: 'https://moonscan.io',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.multisig.moonbeam.network/',
+    stageSafeTransactionApi: 'https://transaction.staging.multisig.moonbeam.network/',
+    safeUrl: 'https://multisig.moonbeam.network/mbeam:',
+    verifyContractUrl: 'https://moonscan.io/verifyContract',
+  },
+  [NETWORK.MOONRIVER]: {
+    networkExplorerName: 'Moonriver Explorer',
+    networkExplorerUrl: 'https://moonriver.moonscan.io',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.moonriver.multisig.moonbeam.network/',
+    stageSafeTransactionApi: 'https://transaction.moonriver.staging.multisig.moonbeam.network/',
+    safeUrl: 'https://multisig.moonbeam.network/mriver:',
+    verifyContractUrl: 'https://moonriver.moonscan.io/verifyContract',
+  },
+  [NETWORK.MOONBASE]: {
+    networkExplorerName: 'Moonbase Alpha Explorer',
+    networkExplorerUrl: 'https://moonbase.moonscan.io',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction.moonbase.multisig.moonbeam.network/',
+    stageSafeTransactionApi: 'https://transaction.moonbase.staging.multisig.moonbeam.network/',
+    safeUrl: 'https://multisig.moonbeam.network/mbase:',
+    verifyContractUrl: 'https://moonbase.moonscan.io/verifyContract',
+  },
+  [NETWORK.LINEA_SEPOLIA]: {
+    networkExplorerName: 'Linea Sepolia Testnet Explorer',
+    networkExplorerUrl: 'https://sepolia.lineascan.build',
+    networkExplorerApiUrl: 'https://api.etherscan.io/api',
+    safeTransactionApi: 'https://transaction-sepolia.safe.linea.build/',
+    stageSafeTransactionApi: 'https://transaction-sepolia.staging.safe.linea.build/',
+    safeUrl: 'https://safe.linea.build/linea-sepolia:',
+    verifyContractUrl: 'https://sepolia.lineascan.build/verifyContract',
+  },
+  [NETWORK.PLASMA]: {
+    networkExplorerName: 'Plasma Explorer',
+    networkExplorerUrl: 'https://plasmascan.to/',
+    networkExplorerApiUrl: 'https://api.routescan.io/v2/network/mainnet/evm/9745/etherscan/api',
+    safeTransactionApi: 'https://transaction-plasma.safe.protofire.io/',
+    stageSafeTransactionApi: 'https://transaction-plasma.stage.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/plasma:',
+    verifyContractUrl: 'https://plasmascan.to/verifycontract',
+  },
+  [NETWORK.PLASMA_TESTNET]: {
+    networkExplorerName: 'Plasma Testnet Explorer',
+    networkExplorerUrl: 'https://testnet.plasmascan.to',
+    networkExplorerApiUrl: 'https://api.routescan.io/v2/network/testnet/evm/9746_5/etherscan/api',
+    safeTransactionApi: 'https://transaction-plasma-testnet.safe.protofire.io/',
+    stageSafeTransactionApi: 'https://transaction-plasma-testnet.stage.safe.protofire.io/',
+    safeUrl: 'https://app.safe.protofire.io/plasma-testnet:',
+    verifyContractUrl: 'https://testnet.plasmascan.to/verifycontract',
+  },
+  [NETWORK.ZETACHAIN]: {
+    networkExplorerName: 'ZetaChain Explorer',
+    networkExplorerUrl: 'https://zetascan.com',
+    networkExplorerApiUrl: 'https://zetascan.com/api',
+    safeTransactionApi: 'https://transaction.safe.zetachain.com/',
+    stageSafeTransactionApi: 'https://transaction.staging.safe.zetachain.com/',
+    safeUrl: 'https://safe.zetachain.com/zetachain-mainnet:',
+    verifyContractUrl: 'https://zetascan.com/contract-verification',
+  },
+  [NETWORK.ZETACHAIN_TESTNET]: {
+    networkExplorerName: 'ZetaChain Testnet Explorer',
+    networkExplorerUrl: 'https://testnet.zetascan.com',
+    networkExplorerApiUrl: 'https://testnet.zetascan.com/api',
+    safeTransactionApi: 'https://transaction-testnet.safe.zetachain.com/',
+    stageSafeTransactionApi: 'https://transaction-testnet.staging.safe.zetachain.com/',
+    safeUrl: 'https://safe.zetachain.com/zetachain-athens:',
+    verifyContractUrl: 'https://testnet.zetascan.com/contract-verification',
+  },
+  [NETWORK.FLOW_EVM_MAINNET]: {
+    networkExplorerName: 'Flow EVM Mainnet Explorer',
+    networkExplorerUrl: 'https://evm.flowscan.io',
+    networkExplorerApiUrl: 'https://evm.flowscan.io/api',
+    safeTransactionApi: 'https://transaction.safe.flow.com/',
+    stageSafeTransactionApi: 'https://transaction.staging.safe.flow.com/',
+    safeUrl: 'https://safe.flow.com/flow-mainnet:',
+    verifyContractUrl: 'https://evm.flowscan.io/contract-verification',
+  },
+  [NETWORK.FLOW_EVM_TESTNET]: {
+    networkExplorerName: 'Flow EVM Testnet Explorer',
+    networkExplorerUrl: 'https://evm-testnet.flowscan.io',
+    networkExplorerApiUrl: 'https://evm-testnet.flowscan.io',
+    safeTransactionApi: 'https://transaction-testnet.safe.flow.com/',
+    stageSafeTransactionApi: 'https://transaction-testnet.staging.safe.flow.com/',
+    safeUrl: 'https://safe.flow.com/flow-testnet:',
+    verifyContractUrl: 'https://evm-testnet.flowscan.io/contract-verification',
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {
@@ -286,7 +380,9 @@ export const getNetworkExplorerInfo = (chainId: number) => {
     url: networkBaseConfig.networkExplorerUrl,
     apiUrl: networkBaseConfig.networkExplorerApiUrl,
     apiKey: ETHERSCAN_API_KEY,
-    safeTransactionApi: networkBaseConfig.safeTransactionApi,
+    safeTransactionApi: IS_PRODUCTION
+      ? networkBaseConfig.safeTransactionApi
+      : networkBaseConfig.stageSafeTransactionApi ?? networkBaseConfig.safeTransactionApi,
     safeUrl: networkBaseConfig.safeUrl,
     verifyUrl: networkBaseConfig.verifyContractUrl,
   }

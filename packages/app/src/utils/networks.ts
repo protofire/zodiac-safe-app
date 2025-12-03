@@ -32,6 +32,16 @@ export enum NETWORK {
   SCROLL = 534352,
   AURORA = 1313161554,
   GNOSIS_CHIADO = 10200,
+  MOONBEAM = 1284,
+  MOONRIVER = 1285,
+  MOONBASE = 1287,
+  LINEA_SEPOLIA = 59141,
+  PLASMA = 9745,
+  PLASMA_TESTNET = 9746,
+  ZETACHAIN = 7000,
+  ZETACHAIN_TESTNET = 7001,
+  FLOW_EVM_MAINNET = 747,
+  FLOW_EVM_TESTNET = 545,
 }
 
 export interface Coin {
@@ -41,7 +51,7 @@ export interface Coin {
 
 interface Network {
   chainId: number
-  name: string
+  name?: string
   shortName: string
   nativeAsset: Coin
 }
@@ -61,6 +71,13 @@ export const NATIVE_ASSET: Record<string, Coin> = {
   GHO: { symbol: 'GHO', decimals: 18 },
   PEAQ: { symbol: 'PEAQ', decimals: 18 },
   HYPER: { symbol: 'HYPER', decimals: 18 },
+  GLMR: { symbol: "GLMR", decimals: 18 },
+  MOVR: { symbol: "MOVR", decimals: 18 },
+  DEV: { symbol: "DEV", decimals: 18 },
+  LINEA_ETH: { symbol: "ETH", decimals: 18 },
+  XPL: { symbol: "XPL", decimals: 18 },
+  ZETA: { symbol: "ZETA", decimals: 18 },
+  FLOW: { symbol: "FLOW", decimals: 18 },
 }
 
 export const NETWORKS: Record<NETWORK, Network> = {
@@ -262,8 +279,72 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: 'chi',
     nativeAsset: NATIVE_ASSET.XDAI,
   },
+  [NETWORK.MOONBEAM]: {
+    chainId: NETWORK.MOONBEAM,
+    shortName: 'mbeam',
+    nativeAsset: NATIVE_ASSET.GLMR,
+  },
+  [NETWORK.MOONRIVER]: {
+    chainId: NETWORK.MOONRIVER,
+    shortName: 'mriver',
+    nativeAsset: NATIVE_ASSET.MOVR,
+  },
+  [NETWORK.MOONBASE]: {
+    chainId: NETWORK.MOONBASE,
+    shortName: 'mbase',
+    nativeAsset: NATIVE_ASSET.DEV,
+  },
+  [NETWORK.LINEA_SEPOLIA]: {
+    chainId: NETWORK.LINEA_SEPOLIA,
+    shortName: 'linea-sepolia',
+    nativeAsset: NATIVE_ASSET.LINEA_ETH,
+  },
+  [NETWORK.PLASMA]: {
+    chainId: NETWORK.PLASMA,
+    shortName: 'plasma',
+    nativeAsset: NATIVE_ASSET.XPL,
+  },
+  [NETWORK.PLASMA_TESTNET]: {
+    chainId: NETWORK.PLASMA_TESTNET,
+    shortName: 'plasma-testnet',
+    nativeAsset: NATIVE_ASSET.XPL,
+  },
+  [NETWORK.ZETACHAIN]: {
+    chainId: NETWORK.ZETACHAIN,
+    shortName: 'zetachain-mainnet',
+    nativeAsset: NATIVE_ASSET.ZETA,
+  },
+  [NETWORK.ZETACHAIN_TESTNET]: {
+    chainId: NETWORK.ZETACHAIN_TESTNET,
+    shortName: 'zetachain-testnet',
+    nativeAsset: NATIVE_ASSET.ZETA,
+  },
+  [NETWORK.FLOW_EVM_MAINNET]: {
+    chainId: NETWORK.FLOW_EVM_MAINNET,
+    shortName: 'flow-mainnet',
+    nativeAsset: NATIVE_ASSET.FLOW,
+  },
+  [NETWORK.FLOW_EVM_TESTNET]: {
+    chainId: NETWORK.FLOW_EVM_TESTNET,
+    shortName: 'flow-testnet',
+    nativeAsset: NATIVE_ASSET.FLOW,
+  },
 }
 
+export const NETWORKS_SUPPORTED_BY_PROTOFIRE: Array<NETWORK> = [
+  NETWORK.MOONBEAM,
+  NETWORK.MOONRIVER,
+  NETWORK.MOONBASE,
+  NETWORK.LINEA_SEPOLIA,
+  NETWORK.PLASMA,
+  NETWORK.PLASMA_TESTNET,
+  NETWORK.ZETACHAIN,
+  NETWORK.ZETACHAIN_TESTNET,
+  NETWORK.FLOW_EVM_MAINNET,
+  NETWORK.FLOW_EVM_TESTNET,
+]
+
+/*
 export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.MAINNET]: NATIVE_ASSET.ETH,
   [NETWORK.GNOSIS_CHAIN]: NATIVE_ASSET.XDAI,
@@ -299,3 +380,4 @@ export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
   [NETWORK.AURORA]: NATIVE_ASSET.ETH,
   [NETWORK.GNOSIS_CHIADO]: NATIVE_ASSET.XDAI,
 }
+*/
