@@ -3,7 +3,7 @@ import { Link, makeStyles, Typography } from "@material-ui/core"
 import { Address } from "components/ethereum/Address"
 import { Row } from "components/layout/Row"
 
-import React from "react"
+import React, { useMemo } from 'react'
 import { Module } from "store/modules/models"
 import { PanelItemProps } from "./PanelItem"
 import { rolesV2AppUrl } from "utils/url"
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export const RolesV2ModuleItem: React.FC<RoleModuleItemProps> = ({ module }) => {
   const classes = useStyles()
   const { safe: safeInfo } = useSafeAppsSDK()
+  const rolesV2App = useMemo(() => rolesV2AppUrl(safeInfo, module.address), [safeInfo, module.address])
 
   return (
     <div className={classes.root}>
@@ -61,17 +62,17 @@ export const RolesV2ModuleItem: React.FC<RoleModuleItemProps> = ({ module }) => 
             className: classes.address,
           }}
         />
-        <Link
+        {rolesV2App !== undefined ? (<Link
           color="textPrimary"
           noWrap
           className={classes.link}
           onClick={() => {
-            window.location.href = rolesV2AppUrl(safeInfo, module.address)
+            window.location.href = rolesV2App
           }}
           underline="always"
         >
           View Roles
-        </Link>
+        </Link>) : null}
       </Row>
     </div>
   )

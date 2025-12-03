@@ -13,13 +13,14 @@ import {
   setRealityModuleScreen,
 } from '../../store/modules'
 import { useSafeAppsSDK } from '@gnosis.pm/safe-apps-react-sdk'
-import { NETWORK } from 'utils/networks'
+import { NETWORK, NETWORKS_SUPPORTED_BY_PROTOFIRE } from 'utils/networks'
 import { klerosAvailability } from 'components/input/ArbitratorSelect'
 import {
   ContractAddresses as AllContractAddresses,
   KnownContracts,
   SupportedNetworks,
 } from '@gnosis-guild/zodiac'
+import { getConnextAddress, getTellorOracle } from '../../services'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,7 +94,7 @@ export const AddModulesView = () => {
               </a>{' '}
               and about Gnosis Safe modules more generally in{' '}
               <a
-                href='https://help.gnosis-safe.io/en/articles/4934378-what-is-a-module'
+                href='https://help.safe.global/en/articles/40827-what-is-a-module'
                 target='_blank'
                 rel='noopener noreferrer'
                 className={classes.link}
@@ -167,7 +168,7 @@ export const AddModulesView = () => {
           description='Enables on-chain execution of successful Snapshot proposals reported by the Tellor oracle'
           icon='tellor'
           onClick={() => setModule(ModuleType.TELLOR)}
-          available={!!ContractAddresses[KnownContracts.TELLOR]}
+          available={!!ContractAddresses[KnownContracts.TELLOR] && !!getTellorOracle(safe.chainId)}
         />
 
         <ModuleButton
@@ -175,7 +176,7 @@ export const AddModulesView = () => {
           description="Enables on-chain execution of successful Snapshot proposals utilizing UMA's optimistic oracle."
           icon='optimisticGov'
           onClick={() => setModule(ModuleType.OPTIMISTIC_GOVERNOR)}
-          available // TODO
+          available={!NETWORKS_SUPPORTED_BY_PROTOFIRE.includes(safe.chainId)}
         />
 
         <ModuleButton
@@ -191,7 +192,7 @@ export const AddModulesView = () => {
           description='Enables an address on one chain to control an avatar on another chain using Connext as the messaging layer.'
           icon='connext'
           onClick={() => setModule(ModuleType.CONNEXT)}
-          available={!!ContractAddresses[KnownContracts.CONNEXT]}
+          available={!!getConnextAddress(safe.chainId)}
         />
 
         <ModuleButton

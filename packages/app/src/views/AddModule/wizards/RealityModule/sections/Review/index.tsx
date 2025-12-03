@@ -209,7 +209,7 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
                         <Link
                           color='inherit'
                           href={`${
-                            EXPLORERS_CONFIG[safe.chainId as NETWORK]
+                            EXPLORERS_CONFIG[safe.chainId as NETWORK]?.networkExplorerUrl
                           }/search?f=0&q=${oracleData.instanceData.instanceAddress}`}
                           target='_blank'
                           className={classes.link}

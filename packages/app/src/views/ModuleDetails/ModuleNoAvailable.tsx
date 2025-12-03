@@ -37,7 +37,7 @@ export const ModuleNoAvailable: React.FC = () => {
         We couldn't find an ABI and didn't recognize it as one of the known Zodiac contracts.
       </Typography>
       <Link target='_blank' href={verifyUrl} className={classes.link}>
-        Verify this contract on Etherscan to fix this.
+        Verify this contract on Block Explorer to fix this.
       </Link>
     </ZodiacPaper>
   )
