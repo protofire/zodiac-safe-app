@@ -15,6 +15,7 @@ import { NETWORK } from '../utils/networks'
 import { ERC721_CONTRACT_ABI } from './reality-eth'
 import { scaleBondDecimals } from 'components/input/CollateralSelect'
 import { FunctionOutputs } from 'hooks/useContractQuery'
+import { ConnextDiamondAddresses } from '../utils/constants.ts'
 
 export enum ARBITRATOR_OPTIONS {
   NO_ARBITRATOR,
@@ -221,21 +222,22 @@ export function getArbitrator(chainId: number, arbitratorOption: number): string
 }
 
 export function getConnextAddress(chainId: number): string {
-  switch (chainId) {
-    case NETWORK.MAINNET:
-      return '0x8898B472C54c31894e3B9bb83cEA802a5d0e63C6'
-    case NETWORK.POLYGON:
-      return '0x11984dc4465481512eb5b777E44061C158CF2259'
-    case NETWORK.SEPOLIA:
-      return '0x445fbf9cCbaf7d557fd771d56937E94397f43965'
-    case NETWORK.GNOSIS_CHAIN:
-      return '0x5bB83e95f63217CDa6aE3D181BA580Ef377D2109'
-    case NETWORK.OPTIMISM:
-      return '0x8f7492DE823025b4CfaAB1D34c58963F2af5DEDA'
-    case NETWORK.ARBITRUM:
-      return '0xEE9deC2712cCE65174B561151701Bf54b99C24C8'
-  }
-  return ''
+  return ConnextDiamondAddresses[chainId] ?? ''
+  // switch (chainId) {
+  //   case NETWORK.MAINNET:
+  //     return '0x8898B472C54c31894e3B9bb83cEA802a5d0e63C6'
+  //   case NETWORK.POLYGON:
+  //     return '0x11984dc4465481512eb5b777E44061C158CF2259'
+  //   case NETWORK.SEPOLIA:
+  //     return '0x445fbf9cCbaf7d557fd771d56937E94397f43965'
+  //   case NETWORK.GNOSIS_CHAIN:
+  //     return '0x5bB83e95f63217CDa6aE3D181BA580Ef377D2109'
+  //   case NETWORK.OPTIMISM:
+  //     return '0x8f7492DE823025b4CfaAB1D34c58963F2af5DEDA'
+  //   case NETWORK.ARBITRUM:
+  //     return '0xEE9deC2712cCE65174B561151701Bf54b99C24C8'
+  // }
+  // return ''
 }
 
 export async function deployTellorModule(
