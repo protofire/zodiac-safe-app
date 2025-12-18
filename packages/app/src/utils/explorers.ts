@@ -6,8 +6,9 @@ interface ExplorerData {
   networkExplorerUrl: string
   networkExplorerApiUrl: string
   safeTransactionApi: string
-  stageSafeTransactionApi?: string
   safeUrl: string
+  stageSafeTransactionApi?: string
+  stageSafeUrl?: string
   verifyContractUrl: string
 }
 
@@ -383,7 +384,9 @@ export const getNetworkExplorerInfo = (chainId: number) => {
     safeTransactionApi: IS_PRODUCTION
       ? networkBaseConfig.safeTransactionApi
       : networkBaseConfig.stageSafeTransactionApi ?? networkBaseConfig.safeTransactionApi,
-    safeUrl: networkBaseConfig.safeUrl,
+    safeUrl: IS_PRODUCTION
+      ? networkBaseConfig.safeUrl
+      : networkBaseConfig.stageSafeUrl ?? networkBaseConfig.safeUrl,
     verifyUrl: networkBaseConfig.verifyContractUrl,
   }
 }
