@@ -371,6 +371,26 @@ export const EXPLORERS_CONFIG: Record<NETWORK, ExplorerData> = {
     safeUrl: 'https://safe.flow.com/flow-testnet:',
     verifyContractUrl: 'https://evm-testnet.flowscan.io/contract-verification',
   },
+  [NETWORK.SHAPE]: {
+    networkExplorerName: 'Shape Mainnet Explorer',
+    networkExplorerUrl: 'https://shapescan.xyz',
+    networkExplorerApiUrl: 'https://shapescan.xyz/api',
+    safeTransactionApi: 'https://transaction.safe.shape.network',
+    stageSafeTransactionApi: 'https://transaction.staging.safe.shape.network',
+    safeUrl: 'https://safe.shape.network/shape:',
+    stageSafeUrl: 'https://staging.safe.shape.network/shape:',
+    verifyContractUrl: 'https://shapescan.xyz/contract-verification',
+  },
+  [NETWORK.SHAPE_SEPOLIA_TESTNET]: {
+    networkExplorerName: 'Shape Sepolia Testnet Explorer',
+    networkExplorerUrl: 'https://sepolia.shapescan.xyz',
+    networkExplorerApiUrl: 'https://sepolia.shapescan.xyz/api',
+    safeTransactionApi: 'https://transaction-testnet.safe.shape.network',
+    stageSafeTransactionApi: 'https://transaction-testnet.staging.safe.shape.network',
+    safeUrl: 'https://safe.shape.network/shapesep:',
+    stageSafeUrl: 'https://staging.safe.shape.network/shapesep:',
+    verifyContractUrl: 'https://sepolia.shapescan.xyz/contract-verification',
+  },
 }
 
 export const getNetworkExplorerInfo = (chainId: number) => {

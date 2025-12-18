@@ -2,7 +2,7 @@ diff --git a/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.d.ts b/node_mo
 index eab70b7..9f10fb1 100644
 --- a/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.d.ts
 +++ b/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.d.ts
-@@ -36,7 +36,17 @@ export declare enum SupportedNetworks {
+@@ -36,7 +36,19 @@ export declare enum SupportedNetworks {
      ZkSync = 324,
      Scroll = 534352,
      Aurora = 1313161554,
@@ -17,7 +17,9 @@ index eab70b7..9f10fb1 100644
 +    Zetachain = 7000,
 +    ZetachainTestnet = 7001,
 +    FlowEvmMainnet = 747,
-+    FlowEvmTestnet = 545
++    FlowEvmTestnet = 545,
++    Shape = 360,
++    ShapeSepolia = 11011,
  }
  /**
   * Canonical addresses of head versions of each contract.
@@ -25,7 +27,7 @@ diff --git a/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.js b/node_modu
 index 28889d8..5e03a6a 100644
 --- a/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.js
 +++ b/node_modules/@gnosis-guild/zodiac/dist/cjs/contracts.js
-@@ -106,6 +106,16 @@ var SupportedNetworks;
+@@ -106,6 +106,18 @@ var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["Scroll"] = 534352] = "Scroll";
      SupportedNetworks[SupportedNetworks["Aurora"] = 1313161554] = "Aurora";
      SupportedNetworks[SupportedNetworks["GnosisChiado"] = 10200] = "GnosisChiado";
@@ -39,10 +41,12 @@ index 28889d8..5e03a6a 100644
 +    SupportedNetworks[SupportedNetworks["ZetachainTestnet"] = 7001] = "ZetachainTestnet";
 +    SupportedNetworks[SupportedNetworks["FlowEvmMainnet"] = 747] = "FlowEvmMainnet";
 +    SupportedNetworks[SupportedNetworks["FlowEvmTestnet"] = 545] = "FlowEvmTestnet";
++    SupportedNetworks[SupportedNetworks["Shape"] = 360] = "Shape";
++    SupportedNetworks[SupportedNetworks["ShapeSepolia"] = 11011] = "ShapeSepolia";
  })(SupportedNetworks || (exports.SupportedNetworks = SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -267,6 +277,36 @@ exports.ContractVersions = {
+@@ -267,6 +277,58 @@ exports.ContractVersions = {
      [SupportedNetworks.Scroll]: CanonicalAddresses,
      [SupportedNetworks.Aurora]: CanonicalAddresses,
      [SupportedNetworks.GnosisChiado]: CanonicalAddresses,
@@ -76,6 +80,28 @@ index 28889d8..5e03a6a 100644
 +    }),
 +    [SupportedNetworks.FlowEvmMainnet]: CanonicalAddresses,
 +    [SupportedNetworks.FlowEvmTestnet]: CanonicalAddresses,
++    [SupportedNetworks.Shape]: CanonicalAddresses,
++    [SupportedNetworks.ShapeSepolia]: Object.assign(Object.assign({}, CanonicalAddresses), {
++        [types_1.KnownContracts.REALITY_ETH]: { "2.0.0": "0x628eF1F564D14E83036f8E7C56dFA2dfA0471769" },
++        [types_1.KnownContracts.REALITY_ERC20]: { "2.0.0": "0x198FCDA19515F5eA12ca0A7Ac80917c3EC8D944A" },
++        [types_1.KnownContracts.BRIDGE]: { "1.0.0": "0x3a42Da762eE64BCDB66D1d589724820B3E7219Bd" },
++        [types_1.KnownContracts.DELAY]: { "1.0.1": "0x8b5a0710e602d747050B3201339c1aE630ed2B14" },
++        [types_1.KnownContracts.EXIT_ERC20]: { "1.2.0": "0x2eA027D934B0004B133b11c4Cc41B6d351534133" },
++        [types_1.KnownContracts.EXIT_ERC721]: { "1.2.0": "0x3A7b974Aa24a6d0c3aD5CacB8eAAa87E326c3735" },
++        [types_1.KnownContracts.CIRCULATING_SUPPLY_ERC20]: { "1.2.0": "0xC0D3506EBCf1a131fCBc050119037D2063229ceE" },
++        [types_1.KnownContracts.CIRCULATING_SUPPLY_ERC721]: { "1.2.0": "0x8a9157B3b69bD5aF5648191761Eca40508ed348a" },
++        [types_1.KnownContracts.SCOPE_GUARD]: { "1.0.0": "0x30D3AEcBc1B9de638300D217796eeb7be69B7855" },
++        [types_1.KnownContracts.FACTORY]: { "1.2.0": "0x30efc2ce6C6013B66583E5Dd178e047D5942dD10" },
++        [types_1.KnownContracts.ROLES]: { "1.1.0": "0xE2650DeF4e665b60f0B2E0dEB4446ab057D7a050" },
++        [types_1.KnownContracts.ROLES_V1]: { "1.1.0": "0xE2650DeF4e665b60f0B2E0dEB4446ab057D7a050" },
++        [types_1.KnownContracts.ROLES_V2]: { "2.1.0": "0x245a16D561a1D8399c91bF7593D48f8A923974A3" },
++        [types_1.KnownContracts.OZ_GOVERNOR]: { "1.0.0": "0xd49fCa77B9648d188408C241b09fD4E82572e972" },
++        [types_1.KnownContracts.ERC20_VOTES]: { "1.0.0": "0xDDC2817B68c370fC53B28b134E48Bd90f199812F" },
++        [types_1.KnownContracts.ERC721_VOTES]: { "1.0.0": "0x57Af3684c892EeD125A527467B784A31011Cf303" },
++        [types_1.KnownContracts.MULTISEND_ENCODER]: { "1.0.0": "0x56547Ec08195Cb0B36eFad8b1a526a27df7A853F" },
++        [types_1.KnownContracts.PERMISSIONS]: { "1.0.0": "0x1DD47Cf10F48d2372dF0d9976860bc4B0d8804Fa" },
++        [types_1.KnownContracts.CONNEXT]: { "1.0.0": "0xFdFa50Ed8c778b0E0Df6595A2e18348171782Ff2" },
++    }),
  };
  /** Addresses of the head versions of all contracts */
  exports.ContractAddresses = Object.fromEntries(Object.entries(exports.ContractVersions).map(([network, contracts]) => [
@@ -83,7 +109,7 @@ diff --git a/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.d.ts b/node_mo
 index eab70b7..9f10fb1 100644
 --- a/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.d.ts
 +++ b/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.d.ts
-@@ -36,7 +36,17 @@ export declare enum SupportedNetworks {
+@@ -36,7 +36,19 @@ export declare enum SupportedNetworks {
      ZkSync = 324,
      Scroll = 534352,
      Aurora = 1313161554,
@@ -98,7 +124,9 @@ index eab70b7..9f10fb1 100644
 +    Zetachain = 7000,
 +    ZetachainTestnet = 7001,
 +    FlowEvmMainnet = 747,
-+    FlowEvmTestnet = 545
++    FlowEvmTestnet = 545,
++    Shape = 360,
++    ShapeSepolia = 11011,
  }
  /**
   * Canonical addresses of head versions of each contract.
@@ -106,7 +134,7 @@ diff --git a/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.js b/node_modu
 index 1ae570a..f476472 100644
 --- a/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.js
 +++ b/node_modules/@gnosis-guild/zodiac/dist/esm/contracts.js
-@@ -77,6 +77,16 @@ export var SupportedNetworks;
+@@ -77,6 +77,18 @@ export var SupportedNetworks;
      SupportedNetworks[SupportedNetworks["Scroll"] = 534352] = "Scroll";
      SupportedNetworks[SupportedNetworks["Aurora"] = 1313161554] = "Aurora";
      SupportedNetworks[SupportedNetworks["GnosisChiado"] = 10200] = "GnosisChiado";
@@ -120,10 +148,12 @@ index 1ae570a..f476472 100644
 +    SupportedNetworks[SupportedNetworks["ZetachainTestnet"] = 7001] = "ZetachainTestnet";
 +    SupportedNetworks[SupportedNetworks["FlowEvmMainnet"] = 747] = "FlowEvmMainnet";
 +    SupportedNetworks[SupportedNetworks["FlowEvmTestnet"] = 545] = "FlowEvmTestnet";
++    SupportedNetworks[SupportedNetworks["Shape"] = 360] = "Shape";
++    SupportedNetworks[SupportedNetworks["ShapeSepolia"] = 11011] = "ShapeSepolia";
  })(SupportedNetworks || (SupportedNetworks = {}));
  // const canonicalMasterCopyAddress = (contract: KnownContracts) => {
  //   const { initCode, salt } = MasterCopyInitData[contract];
-@@ -238,6 +248,36 @@ export const ContractVersions = {
+@@ -238,6 +248,58 @@ export const ContractVersions = {
      [SupportedNetworks.Scroll]: CanonicalAddresses,
      [SupportedNetworks.Aurora]: CanonicalAddresses,
      [SupportedNetworks.GnosisChiado]: CanonicalAddresses,
@@ -157,6 +187,28 @@ index 1ae570a..f476472 100644
 +    }),
 +    [SupportedNetworks.FlowEvmMainnet]: CanonicalAddresses,
 +    [SupportedNetworks.FlowEvmTestnet]: CanonicalAddresses,
++    [SupportedNetworks.Shape]: CanonicalAddresses,
++    [SupportedNetworks.ShapeSepolia]: Object.assign(Object.assign({}, CanonicalAddresses), {
++        [types_1.KnownContracts.REALITY_ETH]: { "2.0.0": "0x628eF1F564D14E83036f8E7C56dFA2dfA0471769" },
++        [types_1.KnownContracts.REALITY_ERC20]: { "2.0.0": "0x198FCDA19515F5eA12ca0A7Ac80917c3EC8D944A" },
++        [types_1.KnownContracts.BRIDGE]: { "1.0.0": "0x3a42Da762eE64BCDB66D1d589724820B3E7219Bd" },
++        [types_1.KnownContracts.DELAY]: { "1.0.1": "0x8b5a0710e602d747050B3201339c1aE630ed2B14" },
++        [types_1.KnownContracts.EXIT_ERC20]: { "1.2.0": "0x2eA027D934B0004B133b11c4Cc41B6d351534133" },
++        [types_1.KnownContracts.EXIT_ERC721]: { "1.2.0": "0x3A7b974Aa24a6d0c3aD5CacB8eAAa87E326c3735" },
++        [types_1.KnownContracts.CIRCULATING_SUPPLY_ERC20]: { "1.2.0": "0xC0D3506EBCf1a131fCBc050119037D2063229ceE" },
++        [types_1.KnownContracts.CIRCULATING_SUPPLY_ERC721]: { "1.2.0": "0x8a9157B3b69bD5aF5648191761Eca40508ed348a" },
++        [types_1.KnownContracts.SCOPE_GUARD]: { "1.0.0": "0x30D3AEcBc1B9de638300D217796eeb7be69B7855" },
++        [types_1.KnownContracts.FACTORY]: { "1.2.0": "0x30efc2ce6C6013B66583E5Dd178e047D5942dD10" },
++        [types_1.KnownContracts.ROLES]: { "1.1.0": "0xE2650DeF4e665b60f0B2E0dEB4446ab057D7a050" },
++        [types_1.KnownContracts.ROLES_V1]: { "1.1.0": "0xE2650DeF4e665b60f0B2E0dEB4446ab057D7a050" },
++        [types_1.KnownContracts.ROLES_V2]: { "2.1.0": "0x245a16D561a1D8399c91bF7593D48f8A923974A3" },
++        [types_1.KnownContracts.OZ_GOVERNOR]: { "1.0.0": "0xd49fCa77B9648d188408C241b09fD4E82572e972" },
++        [types_1.KnownContracts.ERC20_VOTES]: { "1.0.0": "0xDDC2817B68c370fC53B28b134E48Bd90f199812F" },
++        [types_1.KnownContracts.ERC721_VOTES]: { "1.0.0": "0x57Af3684c892EeD125A527467B784A31011Cf303" },
++        [types_1.KnownContracts.MULTISEND_ENCODER]: { "1.0.0": "0x56547Ec08195Cb0B36eFad8b1a526a27df7A853F" },
++        [types_1.KnownContracts.PERMISSIONS]: { "1.0.0": "0x1DD47Cf10F48d2372dF0d9976860bc4B0d8804Fa" },
++        [types_1.KnownContracts.CONNEXT]: { "1.0.0": "0xFdFa50Ed8c778b0E0Df6595A2e18348171782Ff2" },
++    }),
  };
  /** Addresses of the head versions of all contracts */
  export const ContractAddresses = Object.fromEntries(Object.entries(ContractVersions).map(([network, contracts]) => [
