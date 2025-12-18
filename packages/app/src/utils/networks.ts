@@ -42,6 +42,8 @@ export enum NETWORK {
   ZETACHAIN_TESTNET = 7001,
   FLOW_EVM_MAINNET = 747,
   FLOW_EVM_TESTNET = 545,
+  SHAPE = 360,
+  SHAPE_SEPOLIA_TESTNET = 11011,
 }
 
 export interface Coin {
@@ -329,6 +331,16 @@ export const NETWORKS: Record<NETWORK, Network> = {
     shortName: 'flow-testnet',
     nativeAsset: NATIVE_ASSET.FLOW,
   },
+  [NETWORK.SHAPE]: {
+    chainId: NETWORK.SHAPE,
+    shortName: 'shape',
+    nativeAsset: NATIVE_ASSET.ETH,
+  },
+  [NETWORK.SHAPE_SEPOLIA_TESTNET]: {
+    chainId: NETWORK.SHAPE_SEPOLIA_TESTNET,
+    shortName: 'shapesep',
+    nativeAsset: NATIVE_ASSET.ETH,
+  },
 }
 
 export const NETWORKS_SUPPORTED_BY_PROTOFIRE: Array<NETWORK> = [
@@ -342,6 +354,8 @@ export const NETWORKS_SUPPORTED_BY_PROTOFIRE: Array<NETWORK> = [
   NETWORK.ZETACHAIN_TESTNET,
   NETWORK.FLOW_EVM_MAINNET,
   NETWORK.FLOW_EVM_TESTNET,
+  NETWORK.SHAPE,
+  NETWORK.SHAPE_SEPOLIA_TESTNET,
 ]
 
 /*
