@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { REDUX_STORE } from './store'
 import { Row } from './components/layout/Row'
 import { zodiacMuiTheme, gnosisStyledComponentsTheme } from 'zodiac-ui-components'
+import { initRegistry } from './chains/registry'
 
 const Main = () => {
   return (
@@ -44,8 +45,13 @@ if (!container) {
 
 const root = ReactDOM.createRoot(container)
 
-root.render(
-  <React.Fragment>
-    <Main />
-  </React.Fragment>,
-)
+const render = () =>
+  root.render(
+    <React.Fragment>
+      <Main />
+    </React.Fragment>,
+  )
+
+// Seed chain metadata from the Chain Registry (cache/FALLBACK backstop it, and it never
+// throws) before first render, so explorer/tx-service/safeUrl lookups are populated.
+initRegistry().finally(render)

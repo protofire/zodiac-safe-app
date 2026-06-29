@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core'
 import debounce from 'lodash.debounce'
 import { InfuraProvider, parseUnits } from 'ethers'
-import { NETWORK, NETWORKS } from 'utils/networks'
+import { getNativeAsset } from 'utils/networks'
 import { getDefaultOracle, getKlerosAddress } from 'services'
 import { AddModuleModal } from '../components/AddModuleModal'
 import { TimeSelect } from 'components/input/TimeSelect'
@@ -234,7 +234,7 @@ export const KlerosRealityModuleModal = ({ open, onClose, onSubmit }: RealityMod
   const mainnetProvider = useMemo(() => new InfuraProvider(1, import.meta.env.VITE_INFURA_ID), [])
   const goerliProvider = useMemo(() => new InfuraProvider(5, import.meta.env.VITE_INFURA_ID), [])
 
-  const bondToken = NETWORKS[safe.chainId as NETWORK].nativeAsset
+  const bondToken = getNativeAsset(safe.chainId)
   const [params, setParams] = useState<RealityModuleParams>({
     snapshotEns: '',
     timeout: (SECONDS_IN_DAY * 2).toString(),

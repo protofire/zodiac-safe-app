@@ -1,6 +1,6 @@
 import { BrowserProvider, ethers, parseUnits } from 'ethers'
 import { getArbitrator, TxWitMeta as TxsWitMeta } from '../../../../../services'
-import { NETWORK, NETWORKS } from '../../../../../utils/networks'
+import { NETWORK, getNativeAsset } from '../../../../../utils/networks'
 // import * as ipfs from '../../../../../services/ipfs'
 import * as R from 'ramda'
 import { setTextRecordTx } from 'services/ens'
@@ -159,7 +159,7 @@ const deployRealityModuleTxs = async (
   executorAddress: string,
   setupData: SetupData,
 ): Promise<TxsWitMeta> => {
-  const bondToken = NETWORKS[chainId as NETWORK].nativeAsset
+  const bondToken = getNativeAsset(chainId)
   const moduleDeploymentParameters: RealityModuleParams = {
     executor: executorAddress,
     bond: parseUnits(setupData.oracle.bondData.bond.toString(), bondToken.decimals).toString(),

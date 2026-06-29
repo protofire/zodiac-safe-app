@@ -1,5 +1,5 @@
 import { SafeInfo } from "@gnosis.pm/safe-apps-sdk"
-import { NETWORK, NETWORKS, NETWORKS_SUPPORTED_BY_PROTOFIRE } from "./networks"
+import { NETWORKS_SUPPORTED_BY_PROTOFIRE, getShortName } from "./networks"
 import { PROTOFIRE_ROLES_V1_URL, PROTOFIRE_ROLES_V2_URL } from "./constants.ts"
 
 export function safeAppUrl(safeInfo: SafeInfo, appUrl: string) {
@@ -34,5 +34,5 @@ export function rolesV2AppUrl(safeInfo: SafeInfo, rolesAddress: string) {
 }
 
 function chainPrefix(safeInfo: SafeInfo): string {
-  return NETWORKS[safeInfo.chainId as NETWORK].shortName
+  return getShortName(safeInfo.chainId)
 }
