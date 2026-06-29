@@ -11,7 +11,9 @@ import type { AppChain, RegistryChainRaw } from './deriveChain.ts'
 export type RegistrySource = 'uninitialized' | 'registry' | 'cache' | 'fallback'
 
 export interface RegistryStoreDeps {
-  fetchFn: typeof fetch
+  /** Only ever called with a string URL and an abort signal — narrower than the
+   *  DOM `fetch` (which also accepts `URL`/`Request`) so test fakes stay simple. */
+  fetchFn: (url: string, init?: { signal?: AbortSignal }) => Promise<Response>
   storage: Storage | undefined
   now: () => number
   parentOrigin: string
