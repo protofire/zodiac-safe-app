@@ -501,7 +501,7 @@ export const callContract = async (
 
 export async function fetchSafeBalanceInfo(chainId: number, safeAddress: string) {
   const network = getNetworkExplorerInfo(chainId)
-  if (!network) return []
+  if (!network?.safeTransactionApi) return []
 
   const url = new URL(
     `api/v1/safes/${safeAddress}/balances/?trusted=false&exclude_spam=false`,
@@ -520,7 +520,7 @@ export async function fetchSafeTransactions(
   params: Record<string, string>,
 ) {
   const network = getNetworkExplorerInfo(chainId)
-  if (!network) return []
+  if (!network?.safeTransactionApi) return []
 
   const url = new URL(
     `api/v1/safes/${safeAddress}/multisig-transactions`,
@@ -537,7 +537,7 @@ export async function fetchSafeTransactions(
 
 export async function fetchSafeStatusFromAPI(chainId: number, safeAddress: string) {
   const network = getNetworkExplorerInfo(chainId)
-  if (!network) throw new Error('invalid network')
+  if (!network?.safeTransactionApi) throw new Error('invalid network')
 
   const url = new URL(`api/v1/safes/${safeAddress}`, network.safeTransactionApi)
 

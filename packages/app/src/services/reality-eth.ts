@@ -1,5 +1,5 @@
 import { Contract, BrowserProvider, ethers } from 'ethers'
-import { Coin, NETWORK, NETWORKS } from '../utils/networks'
+import { Coin, getNativeAsset } from '../utils/networks'
 
 const REALITY_ETH_ERC20_CONTRACT_ABI = ['function token() view returns (address)']
 
@@ -30,7 +30,7 @@ export async function getArbitratorBondToken(
   } catch (err) {
     return {
       isERC20: false,
-      coin: NETWORKS[chainId as NETWORK].nativeAsset,
+      coin: getNativeAsset(chainId),
     }
   }
 }
