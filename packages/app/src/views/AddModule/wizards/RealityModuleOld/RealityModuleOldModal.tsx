@@ -4,7 +4,7 @@ import { Grow } from "../../../../components/layout/Grow"
 import { isAddress, ParamType, parseUnits } from "ethers"
 import { useRootSelector } from "store"
 import { getDelayModules } from "store/modules/selectors"
-import { NETWORK, NETWORKS } from "utils/networks"
+import { getNativeAsset } from "utils/networks"
 import { ARBITRATOR_OPTIONS, getArbitrator, getDefaultOracle } from "services"
 import { getArbitratorBondToken } from "services/reality-eth"
 import { AddModuleModal } from "../components/AddModuleModal"
@@ -63,7 +63,7 @@ export const RealityModuleOldModal = ({
     delayModules.length === 1 ? delayModules[0].address : "",
   )
   const [bondToken, setBondToken] = useState(
-    NETWORKS[safe.chainId as NETWORK].nativeAsset,
+    getNativeAsset(safe.chainId),
   )
   const [params, setParams] = useState<RealityModuleParams>({
     oracle: getDefaultOracle(safe.chainId),
@@ -89,7 +89,7 @@ export const RealityModuleOldModal = ({
           setERC20(response.isERC20)
         })
         .catch(() => {
-          setBondToken(NETWORKS[safe.chainId as NETWORK].nativeAsset)
+          setBondToken(getNativeAsset(safe.chainId))
           setERC20(false)
         })
     }
