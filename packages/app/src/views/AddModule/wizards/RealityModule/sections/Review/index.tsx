@@ -13,7 +13,7 @@ import { useSafeAppsSDK } from '@gnosis.pm/safe-apps-react-sdk'
 import { OracleSectionData } from '../Oracle'
 import { Loader } from '@gnosis.pm/safe-react-components'
 import { unitConversion } from 'components/input/TimeSelect'
-import { EXPLORERS_CONFIG } from 'utils/explorers'
+import { getNetworkExplorerInfo } from 'utils/explorers'
 import { NETWORK } from 'utils/networks'
 import { getSnapshotSpaceUrl } from 'services/snapshot'
 import { StatusLog, SubmittingStatus } from './components/SubmittingStatus'
@@ -209,7 +209,7 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
                         <Link
                           color='inherit'
                           href={`${
-                            EXPLORERS_CONFIG[safe.chainId as NETWORK]
+                            getNetworkExplorerInfo(safe.chainId)?.url
                           }/search?f=0&q=${oracleData.instanceData.instanceAddress}`}
                           target='_blank'
                           className={classes.link}

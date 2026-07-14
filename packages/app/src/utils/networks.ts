@@ -1,3 +1,5 @@
+import { getRegistryChain } from '../chains/registry.ts'
+
 export enum NETWORK {
   MAINNET = 1,
   GNOSIS_CHAIN = 100,
@@ -32,6 +34,20 @@ export enum NETWORK {
   SCROLL = 534352,
   AURORA = 1313161554,
   GNOSIS_CHIADO = 10200,
+  MOONBEAM = 1284,
+  MOONRIVER = 1285,
+  MOONBASE = 1287,
+  LINEA_SEPOLIA = 59141,
+  PLASMA = 9745,
+  PLASMA_TESTNET = 9746,
+  ZETACHAIN = 7000,
+  ZETACHAIN_TESTNET = 7001,
+  FLOW_EVM_MAINNET = 747,
+  FLOW_EVM_TESTNET = 545,
+  SHAPE = 360,
+  SHAPE_SEPOLIA_TESTNET = 11011,
+  SEI = 1329,
+  SEI_TESTNET = 1328,
 }
 
 export interface Coin {
@@ -39,263 +55,32 @@ export interface Coin {
   decimals: number
 }
 
-interface Network {
-  chainId: number
-  name: string
-  shortName: string
-  nativeAsset: Coin
-}
+/**
+ * Native currency for a chain, sourced from the Chain Registry at runtime.
+ * Falls back to ETH/18 for the rare chain the registry/FALLBACK does not carry, so
+ * callers that always expect a coin (Reality/Kleros bond wizards) keep working.
+ */
+export const getNativeAsset = (chainId: number): Coin =>
+  getRegistryChain(chainId)?.nativeAsset ?? { symbol: 'ETH', decimals: 18 }
 
-export const NATIVE_ASSET: Record<string, Coin> = {
-  ETH: { symbol: 'ETH', decimals: 18 },
-  XDAI: { symbol: 'XDAI', decimals: 18 },
-  POL: { symbol: 'POL', decimals: 18 },
-  BNB: { symbol: 'BNB', decimals: 18 },
-  AVAX: { symbol: 'AVAX', decimals: 18 },
-  MNT: { symbol: 'MNT', decimals: 18 },
-  S: { symbol: 'S', decimals: 18 },
-  BERA: { symbol: 'BERA', decimals: 18 },
-  CELO: { symbol: 'CELO', decimals: 18 },
-  CORE: { symbol: 'CORE', decimals: 18 },
-  FLR: { symbol: 'FLR', decimals: 18 },
-  GHO: { symbol: 'GHO', decimals: 18 },
-  PEAQ: { symbol: 'PEAQ', decimals: 18 },
-  HYPER: { symbol: 'HYPER', decimals: 18 },
-}
+/** Chain shortName (e.g. `eth`), sourced from the Chain Registry; '' if unknown. */
+export const getShortName = (chainId: number): string =>
+  getRegistryChain(chainId)?.shortName ?? ''
 
-export const NETWORKS: Record<NETWORK, Network> = {
-  [NETWORK.MAINNET]: {
-    chainId: NETWORK.MAINNET,
-    name: 'mainnet',
-    shortName: 'eth',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.GNOSIS_CHAIN]: {
-    chainId: NETWORK.GNOSIS_CHAIN,
-    name: 'gnosis_chain',
-    shortName: 'gno',
-    nativeAsset: NATIVE_ASSET.XDAI,
-  },
-  [NETWORK.GOERLI]: {
-    chainId: NETWORK.GOERLI,
-    name: 'goerli',
-    shortName: 'gor',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.ARBITRUM]: {
-    chainId: NETWORK.ARBITRUM,
-    name: 'arbitrum',
-    shortName: 'arb1',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.OPTIMISM]: {
-    chainId: NETWORK.OPTIMISM,
-    name: 'optimism',
-    shortName: 'oeth',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.POLYGON]: {
-    chainId: NETWORK.POLYGON,
-    name: 'polygon',
-    shortName: 'matic',
-    nativeAsset: NATIVE_ASSET.POL,
-  },
-  [NETWORK.ZKEVM]: {
-    chainId: NETWORK.ZKEVM,
-    name: 'zkevm',
-    shortName: 'zkevm',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.AVALANCHE]: {
-    chainId: NETWORK.AVALANCHE,
-    name: 'avalanche',
-    shortName: 'avax',
-    nativeAsset: NATIVE_ASSET.AVAX,
-  },
-  [NETWORK.BSC]: {
-    chainId: NETWORK.BSC,
-    name: 'binance_smart_chain',
-    shortName: 'bnb',
-    nativeAsset: NATIVE_ASSET.BNB,
-  },
-  [NETWORK.HARDHAT_NETWORK]: {
-    chainId: NETWORK.HARDHAT_NETWORK,
-    name: 'hardhat',
-    shortName: 'hardhat',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.LINEA]: {
-    chainId: NETWORK.LINEA,
-    name: 'linea',
-    shortName: 'linea',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.LINEA_GOERLI]: {
-    chainId: NETWORK.LINEA_GOERLI,
-    name: 'linea_goerli',
-    shortName: 'linea-goerli',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.SEPOLIA]: {
-    chainId: NETWORK.SEPOLIA,
-    name: 'sepolia',
-    shortName: 'sep',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.BASE]: {
-    chainId: NETWORK.BASE,
-    name: 'base',
-    shortName: 'base',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.BASE_SEPOLIA]: {
-    chainId: NETWORK.BASE_SEPOLIA,
-    name: 'base_sepolia',
-    shortName: 'basesep',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.MANTLE]: {
-    chainId: NETWORK.MANTLE,
-    name: 'mantle',
-    shortName: 'mantle',
-    nativeAsset: NATIVE_ASSET.MNT,
-  },
-  [NETWORK.BERACHAIN]: {
-    chainId: NETWORK.BERACHAIN,
-    name: 'berachain',
-    shortName: 'berachain',
-    nativeAsset: NATIVE_ASSET.BERA,
-  },
-  [NETWORK.SONIC]: {
-    chainId: NETWORK.SONIC,
-    name: 'sonic',
-    shortName: 'sonic',
-    nativeAsset: NATIVE_ASSET.S,
-  },
-  [NETWORK.CELO]: {
-    chainId: NETWORK.CELO,
-    name: 'celo',
-    shortName: 'celo',
-    nativeAsset: NATIVE_ASSET.CELO,
-  },
-  [NETWORK.BOB]: {
-    chainId: NETWORK.BOB,
-    name: 'bob',
-    shortName: 'bob',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.HYPER_EVM]: {
-    chainId: NETWORK.HYPER_EVM,
-    name: 'hyper_evm',
-    shortName: 'hyperevm',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.WORLD_CHAIN]: {
-    chainId: NETWORK.WORLD_CHAIN,
-    name: 'world_chain',
-    shortName: 'wc',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.FLARE]: {
-    chainId: NETWORK.FLARE,
-    name: 'flare',
-    shortName: 'flr',
-    nativeAsset: NATIVE_ASSET.FLR,
-  },
-  [NETWORK.INK]: {
-    chainId: NETWORK.INK,
-    name: 'ink',
-    shortName: 'ink',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.HEMI]: {
-    chainId: NETWORK.HEMI,
-    name: 'hemi',
-    shortName: 'hemi',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.KATANA]: {
-    chainId: NETWORK.KATANA,
-    name: 'katana',
-    shortName: 'katana',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.LENS]: {
-    chainId: NETWORK.LENS,
-    name: 'lens',
-    shortName: 'lens',
-    nativeAsset: NATIVE_ASSET.GHO,
-  },
-  [NETWORK.PEAQ]: {
-    chainId: NETWORK.PEAQ,
-    name: 'peaq',
-    shortName: 'PEAQ',
-    nativeAsset: NATIVE_ASSET.PEAQ,
-  },
-  [NETWORK.UNICHAIN]: {
-    chainId: NETWORK.UNICHAIN,
-    name: 'unichain',
-    shortName: 'unichain',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.ZKSYNC]: {
-    chainId: NETWORK.ZKSYNC,
-    name: 'zksync',
-    shortName: 'zksync',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.SCROLL]: {
-    chainId: NETWORK.SCROLL,
-    name: 'scroll',
-    shortName: 'scroll',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.AURORA]: {
-    chainId: NETWORK.AURORA,
-    name: 'aurora',
-    shortName: 'aurora',
-    nativeAsset: NATIVE_ASSET.ETH,
-  },
-  [NETWORK.GNOSIS_CHIADO]: {
-    chainId: NETWORK.GNOSIS_CHIADO,
-    name: 'gnosis_chiado',
-    shortName: 'chi',
-    nativeAsset: NATIVE_ASSET.XDAI,
-  },
-}
+export const NETWORKS_SUPPORTED_BY_PROTOFIRE: Array<NETWORK> = [
+  NETWORK.MOONBEAM,
+  NETWORK.MOONRIVER,
+  NETWORK.MOONBASE,
+  NETWORK.LINEA_SEPOLIA,
+  NETWORK.PLASMA,
+  NETWORK.PLASMA_TESTNET,
+  NETWORK.ZETACHAIN,
+  NETWORK.ZETACHAIN_TESTNET,
+  NETWORK.FLOW_EVM_MAINNET,
+  NETWORK.FLOW_EVM_TESTNET,
+  NETWORK.SHAPE,
+  NETWORK.SHAPE_SEPOLIA_TESTNET,
+  NETWORK.SEI,
+  NETWORK.SEI_TESTNET,
+]
 
-export const NETWORK_NATIVE_ASSET: Record<NETWORK, Coin> = {
-  [NETWORK.MAINNET]: NATIVE_ASSET.ETH,
-  [NETWORK.GNOSIS_CHAIN]: NATIVE_ASSET.XDAI,
-  [NETWORK.GOERLI]: NATIVE_ASSET.ETH,
-  [NETWORK.ARBITRUM]: NATIVE_ASSET.ETH,
-  [NETWORK.OPTIMISM]: NATIVE_ASSET.ETH,
-  [NETWORK.POLYGON]: NATIVE_ASSET.POL,
-  [NETWORK.ZKEVM]: NATIVE_ASSET.ETH,
-  [NETWORK.AVALANCHE]: NATIVE_ASSET.AVAX,
-  [NETWORK.BSC]: NATIVE_ASSET.BNB,
-  [NETWORK.HARDHAT_NETWORK]: NATIVE_ASSET.ETH,
-  [NETWORK.LINEA]: NATIVE_ASSET.ETH,
-  [NETWORK.LINEA_GOERLI]: NATIVE_ASSET.ETH,
-  [NETWORK.SEPOLIA]: NATIVE_ASSET.ETH,
-  [NETWORK.BASE]: NATIVE_ASSET.ETH,
-  [NETWORK.BASE_SEPOLIA]: NATIVE_ASSET.ETH,
-  [NETWORK.MANTLE]: NATIVE_ASSET.MNT,
-  [NETWORK.BERACHAIN]: NATIVE_ASSET.BERA,
-  [NETWORK.SONIC]: NATIVE_ASSET.S,
-  [NETWORK.CELO]: NATIVE_ASSET.CELO,
-  [NETWORK.BOB]: NATIVE_ASSET.ETH,
-  [NETWORK.HYPER_EVM]: NATIVE_ASSET.ETH,
-  [NETWORK.WORLD_CHAIN]: NATIVE_ASSET.ETH,
-  [NETWORK.FLARE]: NATIVE_ASSET.FLR,
-  [NETWORK.INK]: NATIVE_ASSET.ETH,
-  [NETWORK.HEMI]: NATIVE_ASSET.ETH,
-  [NETWORK.KATANA]: NATIVE_ASSET.ETH,
-  [NETWORK.LENS]: NATIVE_ASSET.GHO,
-  [NETWORK.PEAQ]: NATIVE_ASSET.PEAQ,
-  [NETWORK.UNICHAIN]: NATIVE_ASSET.ETH,
-  [NETWORK.ZKSYNC]: NATIVE_ASSET.ETH,
-  [NETWORK.SCROLL]: NATIVE_ASSET.ETH,
-  [NETWORK.AURORA]: NATIVE_ASSET.ETH,
-  [NETWORK.GNOSIS_CHIADO]: NATIVE_ASSET.XDAI,
-}

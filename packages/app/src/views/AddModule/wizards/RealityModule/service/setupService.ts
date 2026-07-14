@@ -1,6 +1,6 @@
 import { BrowserProvider, ethers, parseUnits } from 'ethers'
 import { getArbitrator, TxWitMeta as TxsWitMeta } from '../../../../../services'
-import { NETWORK, NETWORKS } from '../../../../../utils/networks'
+import { NETWORK, getNativeAsset } from '../../../../../utils/networks'
 // import * as ipfs from '../../../../../services/ipfs'
 import * as R from 'ramda'
 import { setTextRecordTx } from 'services/ens'
@@ -10,7 +10,9 @@ import * as snapshot from '../../../../../services/snapshot'
 import { deployRealityModule, RealityModuleParams } from './moduleDeployment'
 import { pinSnapshotSpace } from './snapshot-space-pinning'
 import { setUpMonitoring } from './monitoring'
-const MULTI_SEND_CONTRACT = import.meta.env.VITE_MULTI_SEND_CONTRACT
+
+// defaults to the 1.4.1 version of the multisend contract
+const MULTI_SEND_CONTRACT = import.meta.env.VITE_MULTI_SEND_CONTRACT ?? '0x38869bf66a61cF6bDB996A6aE40D5853Fd43B526'
 export const DETERMINISTIC_DEPLOYMENT_HELPER_ADDRESS = '0x0961F418E0B6efaA073004989EF1B2fd1bc4a41c' // needs to be deployed on all networks supported by the Reality Module
 
 export const addSafeSnapToSnapshotSpaceTxs = async (
@@ -157,7 +159,7 @@ const deployRealityModuleTxs = async (
   executorAddress: string,
   setupData: SetupData,
 ): Promise<TxsWitMeta> => {
-  const bondToken = NETWORKS[chainId as NETWORK].nativeAsset
+  const bondToken = getNativeAsset(chainId)
   const moduleDeploymentParameters: RealityModuleParams = {
     executor: executorAddress,
     bond: parseUnits(setupData.oracle.bondData.bond.toString(), bondToken.decimals).toString(),

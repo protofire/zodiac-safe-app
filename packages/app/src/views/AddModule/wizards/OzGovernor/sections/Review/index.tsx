@@ -6,7 +6,7 @@ import { colors, ZodiacPaper } from 'zodiac-ui-components'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
 import { Loader } from '@gnosis.pm/safe-react-components'
 import { GovernorWizardProps, SetupData } from '../..'
-import { EXPLORERS_CONFIG } from 'utils/explorers'
+import { getNetworkExplorerInfo } from 'utils/explorers'
 import { NETWORK } from 'utils/networks'
 import { useSafeAppsSDK } from '@gnosis.pm/safe-apps-react-sdk'
 
@@ -124,7 +124,7 @@ export const OZReviewSection: React.FC<OZReviewSectionProps> = ({
                     <Typography>Voting Token:</Typography>
                     <Link
                       target='_blank'
-                      href={`${EXPLORERS_CONFIG[safe.chainId as NETWORK]}/token/${
+                      href={`${getNetworkExplorerInfo(safe.chainId)?.url}/token/${
                         token.tokenAddress
                       }`}
                       className={classes.value}

@@ -3,7 +3,8 @@ import { BrowserProvider, ethers } from 'ethers'
 import { enableModule, TxWitMeta } from 'services'
 import SafeAppsSDK from '@gnosis.pm/safe-apps-sdk'
 
-const MULTI_SEND_CONTRACT = import.meta.env.VITE_MULTI_SEND_CONTRACT
+// defaults to the 1.4.1 version of the multisend contract
+const MULTI_SEND_CONTRACT = import.meta.env.VITE_MULTI_SEND_CONTRACT ?? '0x38869bf66a61cF6bDB996A6aE40D5853Fd43B526'
 if (MULTI_SEND_CONTRACT == null) {
   throw new Error('The MULTI_SEND_CONTRACT environment variable is not set.')
 }
